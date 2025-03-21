@@ -1,7 +1,7 @@
 FROM amd64/ubuntu:20.04 AS base
 
-#If you found this docker image helpful please donate RVN to the maintainer
-LABEL maintainer="RV9zdNeUTQUToZUcRp9uNF8gwH5LzDFtan"
+#TLS Wallet
+LABEL maintainer="TesBmcgLQsowvYEYPXpSHkkapoTbVV7Xfe"
 
 EXPOSE 8766/tcp
 EXPOSE 8767/tcp
@@ -31,33 +31,33 @@ RUN apt-get update && \
 	apt-get clean
 
 #Copy source dir
-COPY . /home/raven/build/Ravencoin/
-WORKDIR /home/raven/build/Ravencoin
+COPY . /home/telestai/build/Telestai/
+WORKDIR /home/telestai/build/Telestai
 
 #build db4 from source
-WORKDIR /home/raven/build/Ravencoin/contrib
+WORKDIR /home/telestai/build/Telestai/contrib
 RUN ./install_db4.sh ../../
 
-# build Ravencore
-WORKDIR /home/raven/build/Ravencoin
-RUN ./autogen.sh && ./configure --disable-tests BDB_LIBS="-L/home/raven/build/db4/lib -ldb_cxx-4.8" BDB_CFLAGS="-I/home/raven/build/db4/include" --with-gui=no  && make -j4
+# build Telestaicore
+WORKDIR /home/telestai/build/Telestai
+RUN ./autogen.sh && ./configure --disable-tests BDB_LIBS="-L/home/telestai/build/db4/lib -ldb_cxx-4.8" BDB_CFLAGS="-I/home/telestai/build/db4/include" --with-gui=no  && make -j4
 
 FROM base AS final
 
 #Add our service account user
-RUN useradd -ms /bin/bash raven && \
-	mkdir /var/lib/raven && \
-	chown raven:raven /var/lib/raven && \
-	ln -s /var/lib/raven /home/raven/.raven && \
-	chown -h raven:raven /home/raven/.raven
+RUN useradd -ms /bin/bash telestai && \
+	mkdir /var/lib/telestai && \
+	chown telestai:telestai /var/lib/telestai && \
+	ln -s /var/lib/telestai /home/telestai/.telestai && \
+	chown -h telestai:telestai /home/telestai/.telestai
 
-VOLUME /var/lib/raven
+VOLUME /var/lib/telestai
 
 #Copy the compiled binaries from the build
-COPY --from=build /home/raven/build/Ravencoin/src/ravend /usr/local/bin/ravend
-COPY --from=build /home/raven/build/Ravencoin/src/raven-cli /usr/local/bin/raven-cli
+COPY --from=build /home/telestai/build/Telestai/src/telestaid /usr/local/bin/telestaid
+COPY --from=build /home/telestai/build/Telestai/src/telestai-cli /usr/local/bin/telestai-cli
 
-WORKDIR /home/raven
-USER raven
+WORKDIR /home/telestai
+USER telestai
 
-CMD /usr/local/bin/ravend -datadir=/var/lib/raven -printtoconsole -onlynet=ipv4
+CMD /usr/local/bin/telestaid -datadir=/var/lib/telestai -printtoconsole -onlynet=ipv4

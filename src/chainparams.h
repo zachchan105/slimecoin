@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2020 The Raven Core developers
+// Copyright (c) 2017-2020 The Telestai Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_CHAINPARAMS_H
-#define RAVEN_CHAINPARAMS_H
+#ifndef TELESTAI_CHAINPARAMS_H
+#define TELESTAI_CHAINPARAMS_H
 
 #include "chainparamsbase.h"
 #include "consensus/params.h"
@@ -40,7 +40,7 @@ struct ChainTxData {
 
 /**
  * CChainParams defines various tweakable parameters of a given instance of the
- * Raven system. There are three: the main network on which people trade goods
+ * Telestai system. There are three: the main network on which people trade goods
  * and services, the public test network which gets reset from time to time and
  * a regression test mode which is intended for private networks only. It has
  * minimal difficulty to ensure that blocks can be found instantly.
@@ -90,9 +90,9 @@ public:
     bool BIP66();
     bool CSVEnabled() const;
 
-    CScript DevelopmentRewardScript() const;
+    CScript DevelopmentRewardScript(const std::string rewardAddress) const;
 
-    /** RVN Start **/
+    /** Telestai Start **/
     const CAmount& IssueAssetBurnAmount() const { return nIssueAssetBurnAmount; }
     const CAmount& ReissueAssetBurnAmount() const { return nReissueAssetBurnAmount; }
     const CAmount& IssueSubAssetBurnAmount() const { return nIssueSubAssetBurnAmount; }
@@ -145,7 +145,7 @@ public:
     int MinReorganizationAge() const { return nMinReorganizationAge; }
 
     int GetAssetActivationHeight() const { return nAssetActivationHeight; }
-    /** RVN End **/
+    /** TLS End **/
 
 protected:
     CChainParams() {}
@@ -167,7 +167,7 @@ protected:
     CCheckpointData checkpointData;
     ChainTxData chainTxData;
 
-    /** RVN Start **/
+    /** TLS Start **/
     // Burn Amounts
     CAmount nIssueAssetBurnAmount;
     CAmount nReissueAssetBurnAmount;
@@ -207,7 +207,7 @@ protected:
     int nAssetActivationHeight;
 
     uint32_t nKAAAWWWPOWActivationTime;
-    /** RVN End **/
+    /** TLS End **/
 };
 
 /**
@@ -244,4 +244,4 @@ void TurnOffBIP66();
 
 void TurnOffCSV();
 
-#endif // RAVEN_CHAINPARAMS_H
+#endif // TELESTAI_CHAINPARAMS_H

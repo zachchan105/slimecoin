@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2021 The Raven Core developers
+// Copyright (c) 2017-2021 The Telestai Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_QT_OPTIONSMODEL_H
-#define RAVEN_QT_OPTIONSMODEL_H
+#ifndef TELESTAI_QT_OPTIONSMODEL_H
+#define TELESTAI_QT_OPTIONSMODEL_H
 
 #include "amount.h"
 
@@ -14,7 +14,7 @@ QT_BEGIN_NAMESPACE
 class QNetworkProxy;
 QT_END_NAMESPACE
 
-/** Interface from Qt to configuration data structure for Raven client.
+/** Interface from Qt to configuration data structure for Telestai client.
    To Qt, the options are presented as a list with the different options
    laid out vertically.
    This can be changed to a tree once the settings become sufficiently
@@ -40,7 +40,7 @@ public:
         ProxyUseTor,            // bool
         ProxyIPTor,             // QString
         ProxyPortTor,           // int
-        DisplayUnit,            // RavenUnits::Unit
+        DisplayUnit,            // TelestaiUnits::Unit
         DisplayCurrencyIndex,   // int
         ThirdPartyTxUrls,       // QString
         IpfsUrl,                // QString
@@ -96,10 +96,10 @@ private:
     QString strThirdPartyTxUrls;
     QString strIpfsUrl;
     bool fCoinControlFeatures;
-    /** RVN START*/
+    /** TLS START*/
     bool fCustomFeeFeatures;
     bool fDarkModeEnabled;
-    /** RVN END*/
+    /** TLS END*/
     /* settings that were overridden by command-line */
     QString strOverriddenByCommandLine;
 
@@ -117,4 +117,4 @@ Q_SIGNALS:
     void updateIconsOnlyToolbar(bool);
 };
 
-#endif // RAVEN_QT_OPTIONSMODEL_H
+#endif // TELESTAI_QT_OPTIONSMODEL_H

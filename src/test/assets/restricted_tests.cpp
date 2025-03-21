@@ -1,10 +1,10 @@
-// Copyright (c) 2017-2019 The Raven Core developers
+// Copyright (c) 2017-2019 The Telestai Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 
 #include <assets/assets.h>
-#include <test/test_raven.h>
+#include <test/test_telestai.h>
 #include <boost/test/unit_test.hpp>
 #include <amount.h>
 #include <base58.h>
@@ -63,7 +63,7 @@ BOOST_FIXTURE_TEST_SUITE(restricted_tests, BasicTestingSetup)
         BOOST_TEST_MESSAGE("Running Verify New Restricted transaction");
 
         /// Create CTxOut to use in the tests ///
-        // Create filler rvn tx
+        // Create filler tls tx
         CScript rvnTransfer = GetScriptForDestination(DecodeDestination(GetParams().GlobalBurnAddress()));
         CTxOut rvnOut(1*COIN, rvnTransfer);
 

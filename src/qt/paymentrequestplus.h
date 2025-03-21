@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Raven Core developers
+// Copyright (c) 2017-2019 The Telestai Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_QT_PAYMENTREQUESTPLUS_H
-#define RAVEN_QT_PAYMENTREQUESTPLUS_H
+#ifndef TELESTAI_QT_PAYMENTREQUESTPLUS_H
+#define TELESTAI_QT_PAYMENTREQUESTPLUS_H
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
@@ -49,4 +49,4 @@ private:
     payments::PaymentDetails details;
 };
 
-#endif // RAVEN_QT_PAYMENTREQUESTPLUS_H
+#endif // TELESTAI_QT_PAYMENTREQUESTPLUS_H

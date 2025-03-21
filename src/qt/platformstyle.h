@@ -1,10 +1,10 @@
 // Copyright (c) 2015 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Raven Core developers
+// Copyright (c) 2017-2019 The Telestai Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_QT_PLATFORMSTYLE_H
-#define RAVEN_QT_PLATFORMSTYLE_H
+#ifndef TELESTAI_QT_PLATFORMSTYLE_H
+#define TELESTAI_QT_PLATFORMSTYLE_H
 
 #include <QIcon>
 #include <QPixmap>
@@ -79,5 +79,5 @@ private:
     /* ... more to come later */
 };
 
-#endif // RAVEN_QT_PLATFORMSTYLE_H
+#endif // TELESTAI_QT_PLATFORMSTYLE_H
 

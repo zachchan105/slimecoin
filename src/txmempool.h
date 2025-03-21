@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2020 The Raven Core developers
+// Copyright (c) 2017-2020 The Telestai Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_TXMEMPOOL_H
-#define RAVEN_TXMEMPOOL_H
+#ifndef TELESTAI_TXMEMPOOL_H
+#define TELESTAI_TXMEMPOOL_H
 
 #include <memory>
 #include <set>
@@ -847,4 +847,4 @@ struct ConnectedBlockAssetData
     std::set<CAssetCacheQualifierAddress> newQualifiersToAdd;
 };
 
-#endif // RAVEN_TXMEMPOOL_H
+#endif // TELESTAI_TXMEMPOOL_H

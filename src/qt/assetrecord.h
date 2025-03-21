@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2020 The Raven Core developers
+// Copyright (c) 2017-2020 The Telestai Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_QT_ASSETRECORD_H
-#define RAVEN_QT_ASSETRECORD_H
+#ifndef TELESTAI_QT_ASSETRECORD_H
+#define TELESTAI_QT_ASSETRECORD_H
 
 #include "math.h"
 #include "amount.h"
@@ -53,4 +53,4 @@ public:
 
 };
 
-#endif // RAVEN_QT_ASSETRECORD_H
+#endif // TELESTAI_QT_ASSETRECORD_H

@@ -1,5 +1,5 @@
 // Copyright (c) 2012-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2021 The Raven Core developers
+// Copyright (c) 2017-2021 The Telestai Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,7 +10,7 @@
 #include "core_io.h"
 #include "netbase.h"
 
-#include "test/test_raven.h"
+#include "test/test_telestai.h"
 
 #include <boost/algorithm/string.hpp>
 #include <boost/test/unit_test.hpp>
@@ -160,23 +160,23 @@ BOOST_FIXTURE_TEST_SUITE(rpc_tests, TestingSetup)
 
         fUnitTest = true;
         BOOST_CHECK_NO_THROW(CallRPC("createrawtransaction [{\"txid\":\"a3b807410df0b60fcb9736768df5823938b2f838694939ba45f3c0a1bff150ed\",\"vout\":0}] {\"tJA4V9dryq2cMxszzirtH9Eyn3XwSWBM1z\":20000}"));
-        BOOST_CHECK_NO_THROW(CallRPC("createrawtransaction [{\"txid\":\"a3b807410df0b60fcb9736768df5823938b2f838694939ba45f3c0a1bff150ed\",\"vout\":0}] {\"tJA4V9dryq2cMxszzirtH9Eyn3XwSWBM1z\":{\"transfer\":{\"RAVEN_ASSET\":20000}}}"));
-        BOOST_CHECK_NO_THROW(CallRPC("createrawtransaction [{\"txid\":\"a3b807410df0b60fcb9736768df5823938b2f838694939ba45f3c0a1bff150ed\",\"vout\":0}] {\"tJA4V9dryq2cMxszzirtH9Eyn3XwSWBM1z\":{\"issue\":{\"asset_name\":\"RAVEN_ASSET\",\"asset_quantity\":20000,\"units\":0,\"reissuable\":1,\"has_ipfs\":0}}}"));
+        BOOST_CHECK_NO_THROW(CallRPC("createrawtransaction [{\"txid\":\"a3b807410df0b60fcb9736768df5823938b2f838694939ba45f3c0a1bff150ed\",\"vout\":0}] {\"tJA4V9dryq2cMxszzirtH9Eyn3XwSWBM1z\":{\"transfer\":{\"TELESTAI_ASSET\":20000}}}"));
+        BOOST_CHECK_NO_THROW(CallRPC("createrawtransaction [{\"txid\":\"a3b807410df0b60fcb9736768df5823938b2f838694939ba45f3c0a1bff150ed\",\"vout\":0}] {\"tJA4V9dryq2cMxszzirtH9Eyn3XwSWBM1z\":{\"issue\":{\"asset_name\":\"TELESTAI_ASSET\",\"asset_quantity\":20000,\"units\":0,\"reissuable\":1,\"has_ipfs\":0}}}"));
 
         // one address multiple asset outs
-        BOOST_CHECK_NO_THROW(CallRPC("createrawtransaction [{\"txid\":\"a3b807410df0b60fcb9736768df5823938b2f838694939ba45f3c0a1bff150ed\",\"vout\":0}] {\"tJA4V9dryq2cMxszzirtH9Eyn3XwSWBM1z\":{\"transfer\":{\"RAVEN_ASSET\":20000,\"RAVEN_ASSET_2\":20000}}}"));
+        BOOST_CHECK_NO_THROW(CallRPC("createrawtransaction [{\"txid\":\"a3b807410df0b60fcb9736768df5823938b2f838694939ba45f3c0a1bff150ed\",\"vout\":0}] {\"tJA4V9dryq2cMxszzirtH9Eyn3XwSWBM1z\":{\"transfer\":{\"TELESTAI_ASSET\":20000,\"TELESTAI_ASSET_2\":20000}}}"));
 
         // multiple coin outs
         BOOST_CHECK_NO_THROW(CallRPC("createrawtransaction [{\"txid\":\"a3b807410df0b60fcb9736768df5823938b2f838694939ba45f3c0a1bff150ed\",\"vout\":0}] {\"tJA4V9dryq2cMxszzirtH9Eyn3XwSWBM1z\":20000,\"Tc1bjybt9kr7kTbZb7W6bJvR6caWEtSzYn\":20000}"));
 
         // coin and asset out
-        BOOST_CHECK_NO_THROW(CallRPC("createrawtransaction [{\"txid\":\"a3b807410df0b60fcb9736768df5823938b2f838694939ba45f3c0a1bff150ed\",\"vout\":0}] {\"tJA4V9dryq2cMxszzirtH9Eyn3XwSWBM1z\":20000,\"Tc1bjybt9kr7kTbZb7W6bJvR6caWEtSzYn\":{\"transfer\":{\"RAVEN_ASSET\":20000}}}"));
+        BOOST_CHECK_NO_THROW(CallRPC("createrawtransaction [{\"txid\":\"a3b807410df0b60fcb9736768df5823938b2f838694939ba45f3c0a1bff150ed\",\"vout\":0}] {\"tJA4V9dryq2cMxszzirtH9Eyn3XwSWBM1z\":20000,\"Tc1bjybt9kr7kTbZb7W6bJvR6caWEtSzYn\":{\"transfer\":{\"TELESTAI_ASSET\":20000}}}"));
 
         // coin and asset out with message
-        BOOST_CHECK_NO_THROW(CallRPC("createrawtransaction [{\"txid\":\"a3b807410df0b60fcb9736768df5823938b2f838694939ba45f3c0a1bff150ed\",\"vout\":0}] {\"tJA4V9dryq2cMxszzirtH9Eyn3XwSWBM1z\":20000,\"Tc1bjybt9kr7kTbZb7W6bJvR6caWEtSzYn\":{\"transferwithmessage\":{\"RAVEN_ASSET\":20000,\"message\":\"QmTqu3Lk3gmTsQVZZZZZZEAW4xZZZZNmbuEAp2Mjr4AV7E\",\"expire_time\":0}}}"));
+        BOOST_CHECK_NO_THROW(CallRPC("createrawtransaction [{\"txid\":\"a3b807410df0b60fcb9736768df5823938b2f838694939ba45f3c0a1bff150ed\",\"vout\":0}] {\"tJA4V9dryq2cMxszzirtH9Eyn3XwSWBM1z\":20000,\"Tc1bjybt9kr7kTbZb7W6bJvR6caWEtSzYn\":{\"transferwithmessage\":{\"TELESTAI_ASSET\":20000,\"message\":\"QmTqu3Lk3gmTsQVZZZZZZEAW4xZZZZNmbuEAp2Mjr4AV7E\",\"expire_time\":0}}}"));
 
         // bad command
-        BOOST_CHECK_THROW(CallRPC("createrawtransaction [{\"txid\":\"a3b807410df0b60fcb9736768df5823938b2f838694939ba45f3c0a1bff150ed\",\"vout\":0}] {\"tJA4V9dryq2cMxszzirtH9Eyn3XwSWBM1z\":{\"badcommand\":{\"RAVEN_ASSET\":20000}}}"), std::runtime_error);
+        BOOST_CHECK_THROW(CallRPC("createrawtransaction [{\"txid\":\"a3b807410df0b60fcb9736768df5823938b2f838694939ba45f3c0a1bff150ed\",\"vout\":0}] {\"tJA4V9dryq2cMxszzirtH9Eyn3XwSWBM1z\":{\"badcommand\":{\"TELESTAI_ASSET\":20000}}}"), std::runtime_error);
     }
 
     BOOST_AUTO_TEST_CASE(rpc_format_monetary_values_test)
@@ -276,7 +276,7 @@ BOOST_FIXTURE_TEST_SUITE(rpc_tests, TestingSetup)
         // Invalid, trailing garbage
         BOOST_CHECK_THROW(ParseNonRFCJSONValue("1.0sds"), std::runtime_error);
         BOOST_CHECK_THROW(ParseNonRFCJSONValue("1.0]"), std::runtime_error);
-        // RVN addresses should fail parsing
+        // TLS addresses should fail parsing
         BOOST_CHECK_THROW(ParseNonRFCJSONValue("175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W"), std::runtime_error);
         BOOST_CHECK_THROW(ParseNonRFCJSONValue("3J98t1WpEZ73CNmQviecrnyiWrnqRhWNL"), std::runtime_error);
     }

@@ -1,10 +1,10 @@
 // Copyright (c) 2017 The Bitcoin Core developers
-// Copyright (c) 2017-2020 The Raven Core developers
+// Copyright (c) 2017-2020 The Telestai Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_RPC_BLOCKCHAIN_H
-#define RAVEN_RPC_BLOCKCHAIN_H
+#ifndef TELESTAI_RPC_BLOCKCHAIN_H
+#define TELESTAI_RPC_BLOCKCHAIN_H
 #include <map>
 #include <string>
 

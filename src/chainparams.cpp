@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2021 The Raven Core developers
+// Copyright (c) 2017-2021 The Telestai Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -56,7 +56,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
     const char* pszTimestamp = "ὅτι ὁ νόμος διὰ Μωϋσέως ἐδόθη, ἡ χάρις καὶ ἡ ἀλήθεια διὰ Ἰησοῦ Χριστοῦ ἐγένετο";
-    const CScript genesisOutputScript = CScript() << ParseHex("76a9149843c065515dd6cd946258a633227b25b5c69d1488ac") << OP_CHECKSIG;
+    const CScript genesisOutputScript = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -110,14 +110,14 @@ bool CChainParams::CSVEnabled() const{
  * + Is surrounded by blocks with reasonable timestamps
  *   (no blocks before with a timestamp after, none after with
  *    timestamp before)
- * + Contains no strange transactions
+ * + Contains no strange information/transactions
  */
 
 class CMainParams : public CChainParams {
 public:
     CMainParams() {
         strNetworkID = "main";
-        consensus.nSubsidyHalvingInterval = 2100000;  //~ 4 yrs at 1 min block time
+        consensus.nSubsidyHalvingInterval = 2102400;  //~ 4 yrs at 1 min block time
         consensus.nBIP34Enabled = true;
         consensus.nBIP65Enabled = true; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
         consensus.nBIP66Enabled = true;
@@ -134,40 +134,40 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
-        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideRuleChangeActivationThreshold = 1814;
-        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideMinerConfirmationWindow = 2016;
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideRuleChangeActivationThreshold = 0;
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideMinerConfirmationWindow = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].bit = 6;  //Assets (RIP2)
         consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nStartTime = 1540944000; // Oct 31, 2018
         consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nTimeout = 1572480000; // Oct 31, 2019
-        consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nOverrideRuleChangeActivationThreshold = 1814;
-        consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nOverrideMinerConfirmationWindow = 2016;
+        consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nOverrideRuleChangeActivationThreshold = 0;
+        consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nOverrideMinerConfirmationWindow = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].bit = 7;  // Assets (RIP5)
         consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nStartTime = 1578920400; // UTC: Mon Jan 13 2020 13:00:00
         consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nTimeout = 1610542800; // UTC: Wed Jan 13 2021 13:00:00
-        consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nOverrideRuleChangeActivationThreshold = 1714; // Approx 85% of 2016
-        consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nOverrideMinerConfirmationWindow = 2016;
+        consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nOverrideRuleChangeActivationThreshold = 0; // Approx 85% of 2016
+        consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nOverrideMinerConfirmationWindow = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].bit = 8;
         consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nStartTime = 1588788000; // UTC: Wed May 06 2020 18:00:00
         consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nTimeout = 1620324000; // UTC: Thu May 06 2021 18:00:00
-        consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nOverrideRuleChangeActivationThreshold = 1714; // Approx 85% of 2016
-        consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nOverrideMinerConfirmationWindow = 2016;
+        consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nOverrideRuleChangeActivationThreshold = 0; // Approx 85% of 2016
+        consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nOverrideMinerConfirmationWindow = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].bit = 9;
         consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nStartTime = 1593453600; // UTC: Mon Jun 29 2020 18:00:00
         consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nTimeout = 1624989600; // UTC: Mon Jun 29 2021 18:00:00
-        consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nOverrideRuleChangeActivationThreshold = 1411; // Approx 70% of 2016
-        consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nOverrideMinerConfirmationWindow = 2016;
+        consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nOverrideRuleChangeActivationThreshold = 0; // Approx 70% of 2016
+        consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nOverrideMinerConfirmationWindow = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].bit = 10;
         consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nStartTime = 1597341600; // UTC: Thu Aug 13 2020 18:00:00
         consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nTimeout = 1628877600; // UTC: Fri Aug 13 2021 18:00:00
-        consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nOverrideRuleChangeActivationThreshold = 1411; // Approx 70% of 2016
-        consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nOverrideMinerConfirmationWindow = 2016;
+        consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nOverrideRuleChangeActivationThreshold = 0; // Approx 70% of 2016
+        consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nOverrideMinerConfirmationWindow = 0;
 
 
         // The best chain should have at least this much work
-        consensus.nMinimumChainWork = uint256S("00000000000000000000000000000000000000000000000000000001c7fcf137"); // Block 2383567
+        consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000000026be418fdd92554"); // Block 16943
 
-        // By default assume that the signatures in ancestors of this block are valid. Block# 1040000
-        consensus.defaultAssumeValid = uint256S("00000014136732688fad666e4df468250792276f0494e7c645880356b865f9fc"); // Block 2383560
+        // Assume that the signatures in ancestors of this block are valid. Block# 1040000
+        consensus.defaultAssumeValid = uint256S("0x0x00000056b9854abf830236d77443a8e3556f0244265e3eb12281a7bc43b7ff57"); // Block 0
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -181,15 +181,15 @@ public:
         nDefaultPort = 8767;
         nPruneAfterHeight = 100000;
 
-        uint32_t nGenesisTime = 1713740100;  // Friday, Feburary 16th 2024 16:13:20 (GMT + 0)
-        uint32_t nGenesisNonce = 1282220;
+        uint32_t nGenesisTime = 1721866235;  // Thursday, July 25 2024 02:31:50 (GMT +0)
+        uint32_t nGenesisNonce = 6353113; 
 
-        std::string nGenesisBlockHash = "0x000000d63e05896c60f9c3397788a9fba5ad0be9749dd51346caaaa83ed139c2";
-        std::string nGenesisMerkleRoot = "6579d135a44cf507ea5d9ef630bb495c2e2f92ed664579c217bc77de5c61c945";
+        std::string nGenesisBlockHash = "0x00000056b9854abf830236d77443a8e3556f0244265e3eb12281a7bc43b7ff57";
+        std::string nGenesisMerkleRoot = "457e7d4f5c3d388fbf90f9a5260ed627a43a0c13f4578d48bc2f983b6ce6e5f7";
 
         genesis = CreateGenesisBlock(nGenesisTime, nGenesisNonce, 0x1e00ffff, 1, 468 * COIN);
-    
-        consensus.hashGenesisBlock = genesis.GetX16RHash();
+   
+        consensus.hashGenesisBlock = genesis.GetX16RV2Hash();
 
         assert(consensus.hashGenesisBlock == uint256S(nGenesisBlockHash));
         assert(genesis.hashMerkleRoot == uint256S(nGenesisMerkleRoot));
@@ -200,11 +200,11 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
 
-        // Raven BIP44 cointype in mainnet is '175'
-        nExtCoinType = 175;
+        // Telestai BIP44 cointype in mainnet is '10117'
+        nExtCoinType = 10117;
 
-        vSeeds.clear();
-        vFixedSeeds.clear();
+        vSeeds.emplace_back("dnsseed.telestainodes.xyz", false);
+        vSeeds.emplace_back("telestai.seeds.multicoin.co", false);
 
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
@@ -213,21 +213,23 @@ public:
 
         checkpointData = (CCheckpointData) {
             {
+                {    0, uint256S("0x00000056b9854abf830236d77443a8e3556f0244265e3eb12281a7bc43b7ff57")},
+                { 16943,uint256S("0x000000000001249118c6f77c21f8c9657536918fd0590f0181764bfaacfdcfd6")},
             }
         };
 
 		// 20969961 transactions as of block #2383625 at 2022-07-28 22:02:22 (UTC)
 		// previously set at 6709969 txns by time 1577939273 ==>
         chainTxData = ChainTxData{
-            // Update as we know more about the contents of the Raven chain
+            // Update as we know more about the contents of the Telestai chain
             // Stats as of 0x00000000000016ec03d8d93f9751323bcc42137b1b4df67e6a11c4394fd8e5ad window size 43200
-            0, // * UNIX timestamp of last known number of transactions
-            0,    // * total number of transactions between genesis and that timestamp
+            1723683041, // * UNIX timestamp of last known number of transactions
+            20823,    // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
-            0       // * estimated number of transactions per second after that timestamp
+            0.01865512171389507       // * estimated number of transactions per second after that timestamp
         };
 
-        /** RVN Start **/
+        /** TLS Start **/
         // Burn Amounts
         nIssueAssetBurnAmount = 500 * COIN;
         nReissueAssetBurnAmount = 100 * COIN;
@@ -239,7 +241,7 @@ public:
         nIssueRestrictedAssetBurnAmount = 1500 * COIN;
         nAddNullQualifierTagBurnAmount = .1 * COIN;
 
-        strDevelopmentRewardAddress = "TqCAymoQ8mgDgSVYaDXzept41tKjNKq1F2";
+        strDevelopmentRewardAddress = "TesBmcgLQsowvYEYPXpSHkkapoTbVV7Xfe";
 
         // Burn Addresses
         strIssueAssetBurnAddress = "ToissueAssetXXXXXXXXXXXXXXXXZ9zEc4";
@@ -268,7 +270,7 @@ public:
 
         nKAAAWWWPOWActivationTime = nGenesisTime + 1; // UTC: Wed May 06 2020 18:00:00
         nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
-        /** RVN End **/
+        /** TLS End **/
     }
 };
 
@@ -400,7 +402,7 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-        // Raven BIP44 cointype in testnet
+        // Telestai BIP44 cointype in testnet
         nExtCoinType = 1;
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
@@ -416,7 +418,7 @@ public:
         };
 
         chainTxData = ChainTxData{
-            // Update as we know more about the contents of the Raven chain
+            // Update as we know more about the contents of the Telestai chain
             // Stats as of 00000023b66f46d74890287a7b1157dd780c7c5fdda2b561eb96684d2b39d62e window size 43200
             1543633332, // * UNIX timestamp of last known number of transactions
             146666,     // * total number of transactions between genesis and that timestamp
@@ -424,7 +426,7 @@ public:
             0.02        // * estimated number of transactions per second after that timestamp
         };
 
-        /** RVN Start **/
+        /** TLS Start **/
         // Burn Amounts
         nIssueAssetBurnAmount = 500 * COIN;
         nReissueAssetBurnAmount = 100 * COIN;
@@ -465,7 +467,7 @@ public:
 
         nKAAAWWWPOWActivationTime = 1585159200; //Wed Mar 25 2020 18:00:00 UTC
         nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
-        /** RVN End **/
+        /** TLS End **/
     }
 };
 
@@ -607,10 +609,10 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-        // Raven BIP44 cointype in regtest
+        // Telestai BIP44 cointype in regtest
         nExtCoinType = 1;
 
-        /** RVN Start **/
+        /** TLS Start **/
         // Burn Amounts
         nIssueAssetBurnAmount = 50 * COIN;
         nReissueAssetBurnAmount = 10 * COIN;
@@ -654,7 +656,7 @@ public:
         // If you are looking to test the kawpow hashing function in regtest. You will need to change this number
         nKAAAWWWPOWActivationTime = 3582830167;
         nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
-        /** RVN End **/
+        /** TLS End **/
     }
 };
 
@@ -676,10 +678,8 @@ std::unique_ptr<CChainParams> CreateChainParams(const std::string& chain)
     throw std::runtime_error(strprintf("%s: Unknown chain %s.", __func__, chain));
 }
 
-CScript CChainParams::DevelopmentRewardScript() const {
-    std::string DevelopmentRewardAddress = GetParams().DevelopmentRewardAddress();
-    // assert(IsValidDestinationString(DevelopmentRewardAddress));
-    CTxDestination destination = DecodeDestination(DevelopmentRewardAddress);
+CScript CChainParams::DevelopmentRewardScript(const std::string rewardAddress) const {
+    CTxDestination destination = DecodeDestination(rewardAddress);
     CScript script = GetScriptForDestination(destination);
     return script;
 }
