@@ -1,10 +1,10 @@
 // Copyright (c) 2015-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_PREVECTOR_H
-#define TELESTAI_PREVECTOR_H
+#ifndef SLIMECOIN_PREVECTOR_H
+#define SLIMECOIN_PREVECTOR_H
 
 #include <assert.h>
 #include <stdlib.h>
@@ -515,4 +515,4 @@ public:
 };
 #pragma pack(pop)
 
-#endif // TELESTAI_PREVECTOR_H
+#endif // SLIMECOIN_PREVECTOR_H

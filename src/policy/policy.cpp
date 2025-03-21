@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2021 The Telestai Core developers
+// Copyright (c) 2017-2021 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -148,9 +148,9 @@ bool IsStandardTx(const CTransaction& tx, std::string& reason, const bool witnes
         return false;
     }
 
-    // only one hundred OP_TELESTAI_ASSET txout is permitted
+    // only one hundred OP_SLIMECOIN_ASSET txout is permitted
     if (nAssetDataOut > 100) {
-        reason = "tomany-op-tls-asset";
+        reason = "tomany-op-slm-asset";
         return false;
     }
 

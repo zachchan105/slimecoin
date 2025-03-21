@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_NET_PROCESSING_H
-#define TELESTAI_NET_PROCESSING_H
+#ifndef SLIMECOIN_NET_PROCESSING_H
+#define SLIMECOIN_NET_PROCESSING_H
 
 #include "net.h"
 #include "validationinterface.h"
@@ -82,4 +82,4 @@ bool GetNodeStateStats(NodeId nodeid, CNodeStateStats &stats);
 /** Increase a node's misbehavior score. */
 void Misbehaving(NodeId nodeid, int howmuch);
 
-#endif // TELESTAI_NET_PROCESSING_H
+#endif // SLIMECOIN_NET_PROCESSING_H

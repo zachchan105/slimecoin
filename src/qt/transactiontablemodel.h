@@ -1,12 +1,12 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_QT_TRANSACTIONTABLEMODEL_H
-#define TELESTAI_QT_TRANSACTIONTABLEMODEL_H
+#ifndef SLIMECOIN_QT_TRANSACTIONTABLEMODEL_H
+#define SLIMECOIN_QT_TRANSACTIONTABLEMODEL_H
 
-#include "telestaiunits.h"
+#include "slimecoinunits.h"
 
 #include <QAbstractTableModel>
 #include <QStringList>
@@ -74,7 +74,7 @@ public:
         StatusRole,
         /** Unprocessed icon */
         RawDecorationRole,
-        /** TLS or name of an asset */
+        /** SLM or name of an asset */
         AssetNameRole,
     };
 
@@ -102,7 +102,7 @@ private:
     QString formatTxDate(const TransactionRecord *wtx) const;
     QString formatTxType(const TransactionRecord *wtx) const;
     QString formatTxToAddress(const TransactionRecord *wtx, bool tooltip) const;
-    QString formatTxAmount(const TransactionRecord *wtx, bool showUnconfirmed=true, TelestaiUnits::SeparatorStyle separators=TelestaiUnits::separatorStandard) const;
+    QString formatTxAmount(const TransactionRecord *wtx, bool showUnconfirmed=true, SlimecoinUnits::SeparatorStyle separators=SlimecoinUnits::separatorStandard) const;
     QString formatTooltip(const TransactionRecord *rec) const;
     QVariant txStatusDecoration(const TransactionRecord *wtx) const;
     QVariant txWatchonlyDecoration(const TransactionRecord *wtx) const;
@@ -121,4 +121,4 @@ public Q_SLOTS:
     friend class TransactionTablePriv;
 };
 
-#endif // TELESTAI_QT_TRANSACTIONTABLEMODEL_H
+#endif // SLIMECOIN_QT_TRANSACTIONTABLEMODEL_H

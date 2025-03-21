@@ -1,10 +1,10 @@
 // Copyright (c) 2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_SUPPORT_LOCKEDPOOL_H
-#define TELESTAI_SUPPORT_LOCKEDPOOL_H
+#ifndef SLIMECOIN_SUPPORT_LOCKEDPOOL_H
+#define SLIMECOIN_SUPPORT_LOCKEDPOOL_H
 
 #include <stdint.h>
 #include <list>
@@ -229,4 +229,4 @@ private:
     static std::once_flag init_flag;
 };
 
-#endif // TELESTAI_SUPPORT_LOCKEDPOOL_H
+#endif // SLIMECOIN_SUPPORT_LOCKEDPOOL_H

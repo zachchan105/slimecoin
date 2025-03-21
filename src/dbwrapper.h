@@ -1,10 +1,10 @@
 // Copyright (c) 2012-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_DBWRAPPER_H
-#define TELESTAI_DBWRAPPER_H
+#ifndef SLIMECOIN_DBWRAPPER_H
+#define SLIMECOIN_DBWRAPPER_H
 
 #include "clientversion.h"
 #include "fs.h"
@@ -341,4 +341,4 @@ public:
 
 };
 
-#endif // TELESTAI_DBWRAPPER_H
+#endif // SLIMECOIN_DBWRAPPER_H

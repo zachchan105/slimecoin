@@ -1,9 +1,9 @@
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAICOIN_ASSETFILTERPROXY_H
-#define TELESTAICOIN_ASSETFILTERPROXY_H
+#ifndef SLIMECOINCOIN_ASSETFILTERPROXY_H
+#define SLIMECOINCOIN_ASSETFILTERPROXY_H
 
 #include <QSortFilterProxyModel>
 
@@ -26,4 +26,4 @@ private:
 };
 
 
-#endif //TELESTAICOIN_ASSETFILTERPROXY_H
+#endif //SLIMECOINCOIN_ASSETFILTERPROXY_H

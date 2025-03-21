@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_TIMESTAMPINDEX_H
-#define TELESTAI_TIMESTAMPINDEX_H
+#ifndef SLIMECOIN_TIMESTAMPINDEX_H
+#define SLIMECOIN_TIMESTAMPINDEX_H
 
 #include "uint256.h"
 
@@ -128,4 +128,4 @@ struct CTimestampBlockIndexValue {
     }
 };
 
-#endif // TELESTAI_TIMESTAMPINDEX_H
+#endif // SLIMECOIN_TIMESTAMPINDEX_H

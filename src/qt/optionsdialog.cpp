@@ -1,16 +1,16 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2021 The Telestai Core developers
+// Copyright (c) 2017-2021 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/telestai-config.h"
+#include "config/slimecoin-config.h"
 #endif
 
 #include "optionsdialog.h"
 #include "ui_optionsdialog.h"
 
-#include "telestaiunits.h"
+#include "slimecoinunits.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 #include "guiconstants.h" // for DEFAULT_IPFS_VIEWER and DEFAULT_THIRD_PARTY_BROWSERS
@@ -75,10 +75,10 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     /* Display elements init */
     QDir translations(":translations");
 
-    ui->telestaiAtStartup->setToolTip(ui->telestaiAtStartup->toolTip().arg(tr(PACKAGE_NAME)));
-    ui->telestaiAtStartup->setText(ui->telestaiAtStartup->text().arg(tr(PACKAGE_NAME)));
+    ui->slimecoinAtStartup->setToolTip(ui->slimecoinAtStartup->toolTip().arg(tr(PACKAGE_NAME)));
+    ui->slimecoinAtStartup->setText(ui->slimecoinAtStartup->text().arg(tr(PACKAGE_NAME)));
 
-    ui->openTelestaiConfButton->setToolTip(ui->openTelestaiConfButton->toolTip().arg(tr(PACKAGE_NAME)));
+    ui->openSlimecoinConfButton->setToolTip(ui->openSlimecoinConfButton->toolTip().arg(tr(PACKAGE_NAME)));
 
     ui->lang->setToolTip(ui->lang->toolTip().arg(tr(PACKAGE_NAME)));
     ui->lang->addItem(QString("(") + tr("default") + QString(")"), QVariant(""));
@@ -113,7 +113,7 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     ui->ipfsUrl->setPlaceholderText(DEFAULT_IPFS_VIEWER);
 #endif
 
-    ui->unit->setModel(new TelestaiUnits(this));
+    ui->unit->setModel(new SlimecoinUnits(this));
     QStringList currencyList;
     for(int unitNum = 0; unitNum < CurrencyUnits::count() ; unitNum++) {
         ui->currencyUnitIndex->addItem(QString(CurrencyUnits::CurrencyOptions[unitNum].Header), unitNum);
@@ -181,7 +181,7 @@ void OptionsDialog::setModel(OptionsModel *_model)
 void OptionsDialog::setMapper()
 {
     /* Main */
-    mapper->addMapping(ui->telestaiAtStartup, OptionsModel::StartAtStartup);
+    mapper->addMapping(ui->slimecoinAtStartup, OptionsModel::StartAtStartup);
     mapper->addMapping(ui->threadsScriptVerif, OptionsModel::ThreadsScriptVerif);
     mapper->addMapping(ui->databaseCache, OptionsModel::DatabaseCache);
 
@@ -248,7 +248,7 @@ void OptionsDialog::on_ipfsUrlReset_clicked()
     ui->ipfsUrl->setText(DEFAULT_IPFS_VIEWER);
 }
 
-void OptionsDialog::on_openTelestaiConfButton_clicked()
+void OptionsDialog::on_openSlimecoinConfButton_clicked()
 {
     /* explain the purpose of the config file */
     QMessageBox::information(this, tr("Configuration options"),
@@ -256,7 +256,7 @@ void OptionsDialog::on_openTelestaiConfButton_clicked()
            "Additionally, any command-line options will override this configuration file."));
 
     /* show an error if there was some problem opening the file */
-    if (!GUIUtil::openTelestaiConf())
+    if (!GUIUtil::openSlimecoinConf())
         QMessageBox::critical(this, tr("Error"), tr("The configuration file could not be opened."));
 }
 

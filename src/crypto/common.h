@@ -1,13 +1,13 @@
 // Copyright (c) 2014 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_CRYPTO_COMMON_H
-#define TELESTAI_CRYPTO_COMMON_H
+#ifndef SLIMECOIN_CRYPTO_COMMON_H
+#define SLIMECOIN_CRYPTO_COMMON_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/telestai-config.h"
+#include "config/slimecoin-config.h"
 #endif
 
 #include <stdint.h>
@@ -101,4 +101,4 @@ uint64_t static inline CountBits(uint64_t x)
     return ret;
 }
 
-#endif // TELESTAI_CRYPTO_COMMON_H
+#endif // SLIMECOIN_CRYPTO_COMMON_H

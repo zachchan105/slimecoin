@@ -27,13 +27,13 @@ import signal  #Used for timeout
 JSON_ONLY_CHECK = False
 FILESIZE_THRESHOLD = 100000000
 
-#Set this to your telestai-cli program
-cli = "telestai-cli"
+#Set this to your slimecoin-cli program
+cli = "slimecoin-cli"
 
 #mode = "-testnet"
 mode = ""
-rpc_port = 8766
-#Set this information in your telestai.conf file (in datadir, not testnet3)
+rpc_port = 4766
+#Set this information in your slimecoin.conf file (in datadir, not testnet3)
 rpc_user = 'rpcuser'
 rpc_pass = 'rpcpass555'
 
@@ -363,8 +363,8 @@ def monitor_zmq():
 	context = zmq.Context()
 	socket = context.socket(zmq.SUB)
 
-	print("Getting Telestai msgs")
-	socket.connect("tcp://localhost:28766")
+	print("Getting Slimecoin msgs")
+	socket.connect("tcp://localhost:24766")
 
 	#socket.setsockopt_string(zmq.SUBSCRIBE, u'hashtx')
 	#socket.setsockopt_string(zmq.SUBSCRIBE, u'hashblock')

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-# Script to issue assets on the Telestai platform
+# Script to issue assets on the Slimecoin platform
 # Reads from a csv file
 # Template Google Spreadsheet at:  
 #   https://docs.google.com/spreadsheets/d/1Ym88-ggbw8yiMgVxOtVYDsCXJGNGZqlpOfgdbVK8iYU
 # In Google Sheets: File->Download As->.csv
-# Prerequisite: telestaid daemon to be running
+# Prerequisite: slimecoind daemon to be running
 # In order to use metadata, you must install be running IPFS
 # Steps:
 #   1. Get IPFS - https://ipfs.io/
@@ -23,15 +23,15 @@ import json
 import hashlib
 
 
-#Set this to your telestai-cli program
-cli = "telestai-cli"
+#Set this to your slimecoin-cli program
+cli = "slimecoin-cli"
 
 mode =  "-testnet"
-rpc_port = 18766
+rpc_port = 14766
 #mode =  "-regtest"
 #rpc_port = 18443
-csv_file = "Telestai Assets - Sheet1.csv"
-#Set this information in your telestai.conf file (in datadir, not testnet3)
+csv_file = "Slimecoin Assets - Sheet1.csv"
+#Set this information in your slimecoin.conf file (in datadir, not testnet3)
 rpc_user = 'rpcuser'
 rpc_pass = 'rpcpass555'
 

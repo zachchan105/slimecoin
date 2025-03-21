@@ -1,11 +1,11 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2012-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2020 The Telestai Core developers
+// Copyright (c) 2017-2020 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_UI_INTERFACE_H
-#define TELESTAI_UI_INTERFACE_H
+#ifndef SLIMECOIN_UI_INTERFACE_H
+#define SLIMECOIN_UI_INTERFACE_H
 
 #include <stdint.h>
 #include <string>
@@ -127,4 +127,4 @@ std::string AmountErrMsg(const char* const optname, const std::string& strValue)
 
 extern CClientUIInterface uiInterface;
 
-#endif // TELESTAI_UI_INTERFACE_H
+#endif // SLIMECOIN_UI_INTERFACE_H

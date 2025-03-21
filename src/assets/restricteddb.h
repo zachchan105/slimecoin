@@ -1,10 +1,10 @@
-// Copyright (c) 2019 The Telestai Core developers
+// Copyright (c) 2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 
-#ifndef TELESTAICOIN_RESTRICTEDDB_H
-#define TELESTAICOIN_RESTRICTEDDB_H
+#ifndef SLIMECOINCOIN_RESTRICTEDDB_H
+#define SLIMECOINCOIN_RESTRICTEDDB_H
 
 #include <dbwrapper.h>
 
@@ -56,4 +56,4 @@ public:
 };
 
 
-#endif //TELESTAICOIN_RESTRICTEDDB_H
+#endif //SLIMECOINCOIN_RESTRICTEDDB_H

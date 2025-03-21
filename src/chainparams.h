@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2020 The Telestai Core developers
+// Copyright (c) 2017-2020 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_CHAINPARAMS_H
-#define TELESTAI_CHAINPARAMS_H
+#ifndef SLIMECOIN_CHAINPARAMS_H
+#define SLIMECOIN_CHAINPARAMS_H
 
 #include "chainparamsbase.h"
 #include "consensus/params.h"
@@ -40,7 +40,7 @@ struct ChainTxData {
 
 /**
  * CChainParams defines various tweakable parameters of a given instance of the
- * Telestai system. There are three: the main network on which people trade goods
+ * Slimecoin system. There are three: the main network on which people trade goods
  * and services, the public test network which gets reset from time to time and
  * a regression test mode which is intended for private networks only. It has
  * minimal difficulty to ensure that blocks can be found instantly.
@@ -92,7 +92,7 @@ public:
 
     CScript DevelopmentRewardScript(const std::string rewardAddress) const;
 
-    /** Telestai Start **/
+    /** Slimecoin Start **/
     const CAmount& IssueAssetBurnAmount() const { return nIssueAssetBurnAmount; }
     const CAmount& ReissueAssetBurnAmount() const { return nReissueAssetBurnAmount; }
     const CAmount& IssueSubAssetBurnAmount() const { return nIssueSubAssetBurnAmount; }
@@ -145,7 +145,7 @@ public:
     int MinReorganizationAge() const { return nMinReorganizationAge; }
 
     int GetAssetActivationHeight() const { return nAssetActivationHeight; }
-    /** TLS End **/
+    /** SLM End **/
 
 protected:
     CChainParams() {}
@@ -167,7 +167,7 @@ protected:
     CCheckpointData checkpointData;
     ChainTxData chainTxData;
 
-    /** TLS Start **/
+    /** SLM Start **/
     // Burn Amounts
     CAmount nIssueAssetBurnAmount;
     CAmount nReissueAssetBurnAmount;
@@ -207,7 +207,7 @@ protected:
     int nAssetActivationHeight;
 
     uint32_t nKAAAWWWPOWActivationTime;
-    /** TLS End **/
+    /** SLM End **/
 };
 
 /**
@@ -244,4 +244,4 @@ void TurnOffBIP66();
 
 void TurnOffCSV();
 
-#endif // TELESTAI_CHAINPARAMS_H
+#endif // SLIMECOIN_CHAINPARAMS_H

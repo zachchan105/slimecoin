@@ -1,9 +1,9 @@
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAICOIN_REWARDS_H
-#define TELESTAICOIN_REWARDS_H
+#ifndef SLIMECOINCOIN_REWARDS_H
+#define SLIMECOINCOIN_REWARDS_H
 
 #include "amount.h"
 #include "tinyformat.h"
@@ -167,4 +167,4 @@ void CheckRewardDistributions(CWallet * p_wallet);
 
 
 
-#endif //TELESTAICOIN_REWARDS_H
+#endif //SLIMECOINCOIN_REWARDS_H

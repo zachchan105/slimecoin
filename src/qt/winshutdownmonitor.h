@@ -1,10 +1,10 @@
 // Copyright (c) 2014 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_QT_WINSHUTDOWNMONITOR_H
-#define TELESTAI_QT_WINSHUTDOWNMONITOR_H
+#ifndef SLIMECOIN_QT_WINSHUTDOWNMONITOR_H
+#define SLIMECOIN_QT_WINSHUTDOWNMONITOR_H
 
 #ifdef WIN32
 #include <QByteArray>
@@ -27,4 +27,4 @@ public:
 #endif
 #endif
 
-#endif // TELESTAI_QT_WINSHUTDOWNMONITOR_H
+#endif // SLIMECOIN_QT_WINSHUTDOWNMONITOR_H

@@ -1,0 +1,92 @@
+#!/sbin/runscript
+
+# backward compatibility for existing gentoo layout 
+#
+if [ -d "/var/lib/slimecoin/.slimecoin" ]; then
+	SLIMECOIND_DEFAULT_DATADIR="/var/lib/slimecoin/.slimecoin"
+else
+	SLIMECOIND_DEFAULT_DATADIR="/var/lib/slimecoind"
+fi
+
+SLIMECOIND_CONFIGFILE=${SLIMECOIND_CONFIGFILE:-/etc/slimecoin/slimecoin.conf}
+SLIMECOIND_PIDDIR=${SLIMECOIND_PIDDIR:-/var/run/slimecoind}
+SLIMECOIND_PIDFILE=${SLIMECOIND_PIDFILE:-${SLIMECOIND_PIDDIR}/slimecoind.pid}
+SLIMECOIND_DATADIR=${SLIMECOIND_DATADIR:-${SLIMECOIND_DEFAULT_DATADIR}}
+SLIMECOIND_USER=${SLIMECOIND_USER:-${SLIMECOIN_USER:-slimecoin}}
+SLIMECOIND_GROUP=${SLIMECOIND_GROUP:-slimecoin}
+SLIMECOIND_BIN=${SLIMECOIND_BIN:-/usr/bin/slimecoind}
+SLIMECOIND_NICE=${SLIMECOIND_NICE:-${NICELEVEL:-0}}
+SLIMECOIND_OPTS="${SLIMECOIND_OPTS:-${SLIMECOIN_OPTS}}"
+
+name="Slimecoin Core Daemon"
+description="Slimecoin cryptocurrency P2P network daemon"
+
+command="/usr/bin/slimecoind"
+command_args="-pid=\"${SLIMECOIND_PIDFILE}\" \
+		-conf=\"${SLIMECOIND_CONFIGFILE}\" \
+		-datadir=\"${SLIMECOIND_DATADIR}\" \
+		-daemon \
+		${SLIMECOIND_OPTS}"
+
+required_files="${SLIMECOIND_CONFIGFILE}"
+start_stop_daemon_args="-u ${SLIMECOIND_USER} \
+			-N ${SLIMECOIND_NICE} -w 2000"
+pidfile="${SLIMECOIND_PIDFILE}"
+
+# The retry schedule to use when stopping the daemon. Could be either
+# a timeout in seconds or multiple signal/timeout pairs (like
+# "SIGKILL/180 SIGTERM/300")
+retry="${SLIMECOIND_SIGTERM_TIMEOUT}"
+
+depend() {
+	need localmount net
+}
+
+# verify
+# 1) that the datadir exists and is writable (or create it)
+# 2) that a directory for the pid exists and is writable
+# 3) ownership and permissions on the config file
+start_pre() {
+	checkpath \
+	-d \
+	--mode 0750 \
+	--owner "${SLIMECOIND_USER}:${SLIMECOIND_GROUP}" \
+	"${SLIMECOIND_DATADIR}"
+
+	checkpath \
+	-d \
+	--mode 0755 \
+	--owner "${SLIMECOIND_USER}:${SLIMECOIND_GROUP}" \
+	"${SLIMECOIND_PIDDIR}"
+
+	checkpath -f \
+	-o ${SLIMECOIND_USER}:${SLIMECOIND_GROUP} \
+	-m 0660 \
+	${SLIMECOIND_CONFIGFILE}
+
+	checkconfig || return 1
+}
+
+checkconfig()
+{
+	if ! grep -qs '^rpcpassword=' "${SLIMECOIND_CONFIGFILE}" ; then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run slimecoind."
+		eerror "The setting must appear in ${SLIMECOIND_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following "
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"Slimecoin Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}

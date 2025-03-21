@@ -1,10 +1,10 @@
 // Copyright (c) 2014 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_CRYPTO_HMAC_SHA512_H
-#define TELESTAI_CRYPTO_HMAC_SHA512_H
+#ifndef SLIMECOIN_CRYPTO_HMAC_SHA512_H
+#define SLIMECOIN_CRYPTO_HMAC_SHA512_H
 
 #include "crypto/sha512.h"
 
@@ -30,4 +30,4 @@ public:
     void Finalize(unsigned char hash[OUTPUT_SIZE]);
 };
 
-#endif // TELESTAI_CRYPTO_HMAC_SHA512_H
+#endif // SLIMECOIN_CRYPTO_HMAC_SHA512_H

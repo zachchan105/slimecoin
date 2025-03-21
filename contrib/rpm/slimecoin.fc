@@ -1,0 +1,8 @@
+/usr/bin/slimecoin-cli		--	gen_context(system_u:object_r:slimecoin_exec_t,s0)
+/usr/sbin/slimecoind		--	gen_context(system_u:object_r:slimecoin_exec_t,s0)
+/usr/lib(64)?/slimecoin/slimecoind		--	gen_context(system_u:object_r:slimecoin_exec_t,s0)
+
+/etc/slimecoin(/.*)?		gen_context(system_u:object_r:slimecoin_conf_t,s0)
+/var/lib/slimecoin(/.*)?		gen_context(system_u:object_r:slimecoin_var_lib_t,s0)
+
+(/var)?/run/slimecoind(/.*)?   gen_context(system_u:object_r:slimecoin_var_run_t,s0)

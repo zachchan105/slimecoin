@@ -6,13 +6,13 @@ import subprocess
 import json
 
 
-#Set this to your telestai-cli program
-cli = "telestai-cli"
+#Set this to your slimecoin-cli program
+cli = "slimecoin-cli"
 
 mode = "-testnet"
 mode = ""
-rpc_port = 18766
-#Set this information in your telestai.conf file (in datadir, not testnet3)
+rpc_port = 14766
+#Set this information in your slimecoin.conf file (in datadir, not testnet3)
 rpc_user = 'rpcuser'
 rpc_pass = 'rpcpass555'
 

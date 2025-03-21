@@ -1,10 +1,10 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: Telestai
-Source: https://github.com/TelestaiProject/Telestai
+Upstream-Name: Slimecoin
+Source: https://github.com/SlimecoinProject/Slimecoin
 
 Files: *
 Copyright: 2009-2017, Bitcoin Core Developers
-           2017-2020, Telestai Core Developers
+           2017-2020, Slimecoin Core Developers
 License: Expat
 Comment: The Bitcoin Core Developers encompasses the current developers listed on bitcoin.org,
          as well as the numerous contributors to the project.
@@ -77,10 +77,10 @@ License: Expat
 Comment: Modifications of Stephan Hutchings Typicons
 
 Files: src/qt/res/icons/about.png
-       src/qt/res/icons/telestai.*
-       share/pixmaps/telestai*
-       src/qt/res/src/telestai.svg
-Copyright: The Telestai Core Developers
+       src/qt/res/icons/slimecoin.*
+       share/pixmaps/slimecoin*
+       src/qt/res/src/slimecoin.svg
+Copyright: The Slimecoin Core Developers
 License: public-domain
 
 

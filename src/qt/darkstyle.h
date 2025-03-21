@@ -11,8 +11,8 @@
 ###############################################################################
 */
 
-#ifndef TELESTAICOIN_DARKSTYLE_H
-#define TELESTAICOIN_DARKSTYLE_H
+#ifndef SLIMECOINCOIN_DARKSTYLE_H
+#define SLIMECOINCOIN_DARKSTYLE_H
 
 #include <QApplication>
 #include <QProxyStyle>
@@ -37,4 +37,4 @@ private:
     QStyle *styleBase(QStyle *style = Q_NULLPTR) const;
 };
 
-#endif //TELESTAICOIN_DARKSTYLE_H
+#endif //SLIMECOINCOIN_DARKSTYLE_H

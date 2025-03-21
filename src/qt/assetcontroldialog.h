@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_QT_ASSETCONTROLDIALOG_H
-#define TELESTAI_QT_ASSETCONTROLDIALOG_H
+#ifndef SLIMECOIN_QT_ASSETCONTROLDIALOG_H
+#define SLIMECOIN_QT_ASSETCONTROLDIALOG_H
 
 #include "amount.h"
 
@@ -125,4 +125,4 @@ private Q_SLOTS:
     void onAssetSelected(QString name);
 };
 
-#endif // TELESTAI_QT_ASSETCONTROLDIALOG_H
+#endif // SLIMECOIN_QT_ASSETCONTROLDIALOG_H

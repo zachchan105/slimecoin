@@ -1,6 +1,6 @@
 ### TestGen ###
 
-Utilities to generate test vectors for the data-driven Telestai tests.
+Utilities to generate test vectors for the data-driven Slimecoin tests.
 
 Usage: 
 

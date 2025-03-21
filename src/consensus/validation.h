@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_CONSENSUS_VALIDATION_H
-#define TELESTAI_CONSENSUS_VALIDATION_H
+#ifndef SLIMECOIN_CONSENSUS_VALIDATION_H
+#define SLIMECOIN_CONSENSUS_VALIDATION_H
 
 #include <string>
 #include "version.h"
@@ -22,9 +22,9 @@ static const unsigned char REJECT_NONSTANDARD = 0x40;
 // static const unsigned char REJECT_DUST = 0x41; // part of BIP 61
 static const unsigned char REJECT_INSUFFICIENTFEE = 0x42;
 static const unsigned char REJECT_CHECKPOINT = 0x43;
-/** TLS START */
+/** SLM START */
 static const unsigned char REJECT_MAXREORGDEPTH = 0x44;
-/** TLS END */
+/** SLM END */
 
 /** Capture information about block/transaction validation */
 class CValidationState {
@@ -117,4 +117,4 @@ static inline int64_t GetBlockWeight(const CBlock& block)
     return ::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION | SERIALIZE_TRANSACTION_NO_WITNESS) * (WITNESS_SCALE_FACTOR - 1) + ::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION);
 }
 
-#endif // TELESTAI_CONSENSUS_VALIDATION_H
+#endif // SLIMECOIN_CONSENSUS_VALIDATION_H

@@ -1,7 +1,7 @@
 Description
 ------------
 
-This directory contains data-driven tests for various aspects of Telestai.
+This directory contains data-driven tests for various aspects of Slimecoin.
 
 License
 --------

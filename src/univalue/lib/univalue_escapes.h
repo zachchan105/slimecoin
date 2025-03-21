@@ -1,6 +1,6 @@
 // Automatically generated file. Do not modify.
-#ifndef TELESTAI_UNIVALUE_UNIVALUE_ESCAPES_H
-#define TELESTAI_UNIVALUE_UNIVALUE_ESCAPES_H
+#ifndef SLIMECOIN_UNIVALUE_UNIVALUE_ESCAPES_H
+#define SLIMECOIN_UNIVALUE_UNIVALUE_ESCAPES_H
 static const char *escapes[256] = {
 	"\\u0000",
 	"\\u0001",
@@ -259,4 +259,4 @@ static const char *escapes[256] = {
 	NULL,
 	NULL,
 };
-#endif // TELESTAI_UNIVALUE_UNIVALUE_ESCAPES_H
+#endif // SLIMECOIN_UNIVALUE_UNIVALUE_ESCAPES_H

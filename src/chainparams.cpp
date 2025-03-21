@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2021 The Telestai Core developers
+// Copyright (c) 2017-2021 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -174,11 +174,11 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0x54; // T
-        pchMessageStart[1] = 0x45; // E
-        pchMessageStart[2] = 0x4c; // L
-        pchMessageStart[3] = 0x45; // E
-        nDefaultPort = 8767;
+        pchMessageStart[0] = 0x53; // S
+        pchMessageStart[1] = 0x4c; // L
+        pchMessageStart[2] = 0x4d; // M
+        pchMessageStart[3] = 0x43; // C
+        nDefaultPort = 4767;
         nPruneAfterHeight = 100000;
 
         uint32_t nGenesisTime = 1721866235;  // Thursday, July 25 2024 02:31:50 (GMT +0)
@@ -194,17 +194,17 @@ public:
         assert(consensus.hashGenesisBlock == uint256S(nGenesisBlockHash));
         assert(genesis.hashMerkleRoot == uint256S(nGenesisMerkleRoot));
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,66);
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,127);
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,128);
-        base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
-        base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,63);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,125);
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,153);
+        base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x89, 0xB3, 0x1F};
+        base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x89, 0xAE, 0xE5};
 
-        // Telestai BIP44 cointype in mainnet is '10117'
-        nExtCoinType = 10117;
+        // Slimecoin BIP44 cointype in mainnet is '31337'
+        nExtCoinType = 31337;
 
-        vSeeds.emplace_back("dnsseed.telestainodes.xyz", false);
-        vSeeds.emplace_back("telestai.seeds.multicoin.co", false);
+        // vSeeds.emplace_back("dnsseed.slimecoinnodes.xyz", false);
+        // vSeeds.emplace_back("slimecoin.seeds.multicoin.co", false);
 
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
@@ -214,14 +214,13 @@ public:
         checkpointData = (CCheckpointData) {
             {
                 {    0, uint256S("0x00000056b9854abf830236d77443a8e3556f0244265e3eb12281a7bc43b7ff57")},
-                { 16943,uint256S("0x000000000001249118c6f77c21f8c9657536918fd0590f0181764bfaacfdcfd6")},
             }
         };
 
 		// 20969961 transactions as of block #2383625 at 2022-07-28 22:02:22 (UTC)
 		// previously set at 6709969 txns by time 1577939273 ==>
         chainTxData = ChainTxData{
-            // Update as we know more about the contents of the Telestai chain
+            // Update as we know more about the contents of the Slimecoin chain
             // Stats as of 0x00000000000016ec03d8d93f9751323bcc42137b1b4df67e6a11c4394fd8e5ad window size 43200
             1723683041, // * UNIX timestamp of last known number of transactions
             20823,    // * total number of transactions between genesis and that timestamp
@@ -229,7 +228,7 @@ public:
             0.01865512171389507       // * estimated number of transactions per second after that timestamp
         };
 
-        /** TLS Start **/
+        /** SLM Start **/
         // Burn Amounts
         nIssueAssetBurnAmount = 500 * COIN;
         nReissueAssetBurnAmount = 100 * COIN;
@@ -241,7 +240,7 @@ public:
         nIssueRestrictedAssetBurnAmount = 1500 * COIN;
         nAddNullQualifierTagBurnAmount = .1 * COIN;
 
-        strDevelopmentRewardAddress = "TesBmcgLQsowvYEYPXpSHkkapoTbVV7Xfe";
+        strDevelopmentRewardAddress = "SesBmcgLQsowvYEYPXpSHkkapoTbVV7Xfe";
 
         // Burn Addresses
         strIssueAssetBurnAddress = "ToissueAssetXXXXXXXXXXXXXXXXZ9zEc4";
@@ -270,7 +269,7 @@ public:
 
         nKAAAWWWPOWActivationTime = nGenesisTime + 1; // UTC: Wed May 06 2020 18:00:00
         nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
-        /** TLS End **/
+        /** SLM End **/
     }
 };
 
@@ -402,7 +401,7 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-        // Telestai BIP44 cointype in testnet
+        // Slimecoin BIP44 cointype in testnet
         nExtCoinType = 1;
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
@@ -418,7 +417,7 @@ public:
         };
 
         chainTxData = ChainTxData{
-            // Update as we know more about the contents of the Telestai chain
+            // Update as we know more about the contents of the Slimecoin chain
             // Stats as of 00000023b66f46d74890287a7b1157dd780c7c5fdda2b561eb96684d2b39d62e window size 43200
             1543633332, // * UNIX timestamp of last known number of transactions
             146666,     // * total number of transactions between genesis and that timestamp
@@ -426,7 +425,7 @@ public:
             0.02        // * estimated number of transactions per second after that timestamp
         };
 
-        /** TLS Start **/
+        /** SLM Start **/
         // Burn Amounts
         nIssueAssetBurnAmount = 500 * COIN;
         nReissueAssetBurnAmount = 100 * COIN;
@@ -467,7 +466,7 @@ public:
 
         nKAAAWWWPOWActivationTime = 1585159200; //Wed Mar 25 2020 18:00:00 UTC
         nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
-        /** TLS End **/
+        /** SLM End **/
     }
 };
 
@@ -609,10 +608,10 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-        // Telestai BIP44 cointype in regtest
+        // Slimecoin BIP44 cointype in regtest
         nExtCoinType = 1;
 
-        /** TLS Start **/
+        /** SLM Start **/
         // Burn Amounts
         nIssueAssetBurnAmount = 50 * COIN;
         nReissueAssetBurnAmount = 10 * COIN;
@@ -656,7 +655,7 @@ public:
         // If you are looking to test the kawpow hashing function in regtest. You will need to change this number
         nKAAAWWWPOWActivationTime = 3582830167;
         nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
-        /** TLS End **/
+        /** SLM End **/
     }
 };
 

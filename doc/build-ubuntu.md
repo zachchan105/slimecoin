@@ -1,4 +1,4 @@
-Build instructions for Telestai 
+Build instructions for Slimecoin 
 =================================
 
 This will install most of the dependencies from ubuntu.
@@ -130,12 +130,12 @@ protobuf-compiler
 
 Directory structure
 ------------------
-Telestai sources in `$HOME/src`
+Slimecoin sources in `$HOME/src`
 
 Berkeley DB will be installed to `$HOME/src/db4`
 
 
-Telestai
+Slimecoin
 ------------------
 
 Start in $HOME
@@ -146,11 +146,11 @@ Make the directory for sources and go into it.
 
 `cd src`
 
-__Download Telestai source.__
+__Download Slimecoin source.__
 
-`git clone https://github.com/TelestaiProject/Telestai`
+`git clone https://github.com/SlimecoinProject/Slimecoin`
 
-`cd Telestai`
+`cd Slimecoin`
 
 `git checkout develop` # this checks out the develop branch.
 
@@ -171,11 +171,11 @@ _Adjust to own needs. This will install the binaries to `/usr/local/bin`_
 
 `make -j8`  # 8 for 8 build threads, adjust to fit your setup.
 
-You can now start telestai-qt from the build directory.
+You can now start slimecoin-qt from the build directory.
 
-`src/qt/telestai-qt`
+`src/qt/slimecoin-qt`
 
-telestaid and telestai-cli are in `src/`
+slimecoind and slimecoin-cli are in `src/`
 
 
 __Optional:__

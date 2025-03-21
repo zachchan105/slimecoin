@@ -1,5 +1,5 @@
 # Copyright (c) 2013-2016 The Bitcoin Core developers
-# Copyright (c) 2017-2019 The Telestai Core developers
+# Copyright (c) 2017-2019 The Slimecoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -19,28 +19,28 @@ else
 LIBUNIVALUE = $(UNIVALUE_LIBS)
 endif
 
-TELESTAI_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
+SLIMECOIN_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
 
-TELESTAI_INCLUDES += -I$(srcdir)/secp256k1/include
-TELESTAI_INCLUDES += $(UNIVALUE_CFLAGS)
+SLIMECOIN_INCLUDES += -I$(srcdir)/secp256k1/include
+SLIMECOIN_INCLUDES += $(UNIVALUE_CFLAGS)
 
-LIBTELESTAI_SERVER=libtelestai_server.a
-LIBTELESTAI_COMMON=libtelestai_common.a
-LIBTELESTAI_CONSENSUS=libtelestai_consensus.a
-LIBTELESTAI_CLI=libtelestai_cli.a
-LIBTELESTAI_UTIL=libtelestai_util.a
-LIBTELESTAI_CRYPTO=crypto/libtelestai_crypto.a
-LIBTELESTAIQT=qt/libtelestaiqt.a
+LIBSLIMECOIN_SERVER=libslimecoin_server.a
+LIBSLIMECOIN_COMMON=libslimecoin_common.a
+LIBSLIMECOIN_CONSENSUS=libslimecoin_consensus.a
+LIBSLIMECOIN_CLI=libslimecoin_cli.a
+LIBSLIMECOIN_UTIL=libslimecoin_util.a
+LIBSLIMECOIN_CRYPTO=crypto/libslimecoin_crypto.a
+LIBSLIMECOINQT=qt/libslimecoinqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 
 if ENABLE_ZMQ
-LIBTELESTAI_ZMQ=libtelestai_zmq.a
+LIBSLIMECOIN_ZMQ=libslimecoin_zmq.a
 endif
-if BUILD_TELESTAI_LIBS
-LIBTELESTAICONSENSUS=libtelestaiconsensus.la
+if BUILD_SLIMECOIN_LIBS
+LIBSLIMECOINCONSENSUS=libslimecoinconsensus.la
 endif
 if ENABLE_WALLET
-LIBTELESTAI_WALLET=libtelestai_wallet.a
+LIBSLIMECOIN_WALLET=libslimecoin_wallet.a
 endif
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
@@ -49,37 +49,37 @@ $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
 # Make is not made aware of per-object dependencies to avoid limiting building parallelization
 # But to build the less dependent modules first, we manually select their order here:
 EXTRA_LIBRARIES += \
-  $(LIBTELESTAI_CRYPTO) \
-  $(LIBTELESTAI_UTIL) \
-  $(LIBTELESTAI_COMMON) \
-  $(LIBTELESTAI_CONSENSUS) \
-  $(LIBTELESTAI_SERVER) \
-  $(LIBTELESTAI_CLI) \
-  $(LIBTELESTAI_WALLET) \
-  $(LIBTELESTAI_ZMQ)
+  $(LIBSLIMECOIN_CRYPTO) \
+  $(LIBSLIMECOIN_UTIL) \
+  $(LIBSLIMECOIN_COMMON) \
+  $(LIBSLIMECOIN_CONSENSUS) \
+  $(LIBSLIMECOIN_SERVER) \
+  $(LIBSLIMECOIN_CLI) \
+  $(LIBSLIMECOIN_WALLET) \
+  $(LIBSLIMECOIN_ZMQ)
 
-lib_LTLIBRARIES = $(LIBTELESTAICONSENSUS)
+lib_LTLIBRARIES = $(LIBSLIMECOINCONSENSUS)
 
 bin_PROGRAMS =
 noinst_PROGRAMS =
 TESTS =
 BENCHMARKS =
 
-if BUILD_TELESTAID
-  bin_PROGRAMS += telestaid
+if BUILD_SLIMECOIND
+  bin_PROGRAMS += slimecoind
 endif
 
-if BUILD_TELESTAI_CLI
-  bin_PROGRAMS += telestai-cli
+if BUILD_SLIMECOIN_CLI
+  bin_PROGRAMS += slimecoin-cli
 endif
 
-if BUILD_TELESTAI_TX
-  bin_PROGRAMS += telestai-tx
+if BUILD_SLIMECOIN_TX
+  bin_PROGRAMS += slimecoin-tx
 endif
 
 .PHONY: FORCE check-symbols check-security
-# telestai core #
-TELESTAI_CORE_H = \
+# slimecoin core #
+SLIMECOIN_CORE_H = \
   addrdb.h \
   addressindex.h \
   algo/sph_groestl.h \
@@ -240,12 +240,12 @@ obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
 	@$(top_srcdir)/share/genbuild.sh "$(abs_top_builddir)/src/obj/build.h" \
 	  "$(abs_top_srcdir)"
-libtelestai_util_a-clientversion.$(OBJEXT): obj/build.h
+libslimecoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between telestaid and telestai-qt
-libtelestai_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(TELESTAI_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
-libtelestai_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libtelestai_server_a_SOURCES = \
+# server: shared between slimecoind and slimecoin-qt
+libslimecoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(SLIMECOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libslimecoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libslimecoin_server_a_SOURCES = \
   addrdb.cpp \
   addrman.cpp \
   bloom.cpp \
@@ -297,23 +297,23 @@ libtelestai_server_a_SOURCES = \
   validation.cpp \
   validationinterface.cpp \
   versionbits.cpp \
-  $(TELESTAI_CORE_H)
+  $(SLIMECOIN_CORE_H)
 
 if ENABLE_ZMQ
-libtelestai_zmq_a_CPPFLAGS = $(TELESTAI_INCLUDES) $(ZMQ_CFLAGS)
-libtelestai_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libtelestai_zmq_a_SOURCES = \
+libslimecoin_zmq_a_CPPFLAGS = $(SLIMECOIN_INCLUDES) $(ZMQ_CFLAGS)
+libslimecoin_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libslimecoin_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
   zmq/zmqnotificationinterface.cpp \
   zmq/zmqpublishnotifier.cpp
 endif
 
 
-# wallet: shared between telestaid and telestai-qt, but only linked
+# wallet: shared between slimecoind and slimecoin-qt, but only linked
 # when wallet enabled
-libtelestai_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(TELESTAI_INCLUDES)
-libtelestai_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libtelestai_wallet_a_SOURCES = \
+libslimecoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(SLIMECOIN_INCLUDES)
+libslimecoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libslimecoin_wallet_a_SOURCES = \
   wallet/crypter.cpp \
   wallet/db.cpp \
   wallet/feebumper.cpp \
@@ -324,12 +324,12 @@ libtelestai_wallet_a_SOURCES = \
   wallet/wallet.cpp \
   wallet/walletdb.cpp \
   wallet/bip39.cpp \
-  $(TELESTAI_CORE_H)
+  $(SLIMECOIN_CORE_H)
 
 # crypto primitives library
-crypto_libtelestai_crypto_a_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libtelestai_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-crypto_libtelestai_crypto_a_SOURCES = \
+crypto_libslimecoin_crypto_a_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libslimecoin_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+crypto_libslimecoin_crypto_a_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
   crypto/chacha20.h \
@@ -372,13 +372,13 @@ crypto_libtelestai_crypto_a_SOURCES = \
   crypto/ethash/progpow_test_vectors.hpp
 
 if USE_ASM
-crypto_libtelestai_crypto_a_SOURCES += crypto/sha256_sse4.cpp
+crypto_libslimecoin_crypto_a_SOURCES += crypto/sha256_sse4.cpp
 endif
 
 # consensus: shared between all executables that validate any consensus rules.
-libtelestai_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(TELESTAI_INCLUDES)
-libtelestai_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libtelestai_consensus_a_SOURCES = \
+libslimecoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(SLIMECOIN_INCLUDES)
+libslimecoin_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libslimecoin_consensus_a_SOURCES = \
   amount.h \
   arith_uint256.cpp \
   arith_uint256.h \
@@ -395,7 +395,7 @@ libtelestai_consensus_a_SOURCES = \
   primitives/transaction.h \
   pubkey.cpp \
   pubkey.h \
-  script/telestaiconsensus.cpp \
+  script/slimecoinconsensus.cpp \
   script/interpreter.cpp \
   script/interpreter.h \
   script/script.cpp \
@@ -413,12 +413,12 @@ libtelestai_consensus_a_SOURCES = \
   version.h \
   LibBoolEE.cpp \
   LibBoolEE.h \
-  $(TELESTAI_CORE_H)
+  $(SLIMECOIN_CORE_H)
 
-# common: shared between telestaid, and telestai-qt and non-server tools
-libtelestai_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(TELESTAI_INCLUDES)
-libtelestai_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libtelestai_common_a_SOURCES = \
+# common: shared between slimecoind, and slimecoin-qt and non-server tools
+libslimecoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(SLIMECOIN_INCLUDES)
+libslimecoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libslimecoin_common_a_SOURCES = \
   base58.cpp \
   chainparams.cpp \
   coins.cpp \
@@ -435,14 +435,14 @@ libtelestai_common_a_SOURCES = \
   script/sign.cpp \
   script/standard.cpp \
   warnings.cpp \
-  $(TELESTAI_CORE_H)
+  $(SLIMECOIN_CORE_H)
 
 # util: shared between all executables.
 # This library *must* be included to make sure that the glibc
 # backward-compatibility objects and their sanity checks are linked.
-libtelestai_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(TELESTAI_INCLUDES)
-libtelestai_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libtelestai_util_a_SOURCES = \
+libslimecoin_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(SLIMECOIN_INCLUDES)
+libslimecoin_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libslimecoin_util_a_SOURCES = \
   support/lockedpool.cpp \
   chainparamsbase.cpp \
   clientversion.cpp \
@@ -458,102 +458,102 @@ libtelestai_util_a_SOURCES = \
   utilmoneystr.cpp \
   utilstrencodings.cpp \
   utiltime.cpp \
-  $(TELESTAI_CORE_H)
+  $(SLIMECOIN_CORE_H)
 
 if GLIBC_BACK_COMPAT
-libtelestai_util_a_SOURCES += compat/glibc_compat.cpp
+libslimecoin_util_a_SOURCES += compat/glibc_compat.cpp
 AM_LDFLAGS += $(COMPAT_LDFLAGS)
 endif
 
-# cli: shared between telestai-cli and telestai-qt
-libtelestai_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(TELESTAI_INCLUDES)
-libtelestai_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libtelestai_cli_a_SOURCES = \
+# cli: shared between slimecoin-cli and slimecoin-qt
+libslimecoin_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(SLIMECOIN_INCLUDES)
+libslimecoin_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libslimecoin_cli_a_SOURCES = \
   rpc/client.cpp \
-  $(TELESTAI_CORE_H)
+  $(SLIMECOIN_CORE_H)
 
-nodist_libtelestai_util_a_SOURCES = $(srcdir)/obj/build.h
+nodist_libslimecoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# telestaid binary #
-telestaid_SOURCES = telestaid.cpp
-telestaid_CPPFLAGS = $(AM_CPPFLAGS) $(TELESTAI_INCLUDES)
-telestaid_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-telestaid_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# slimecoind binary #
+slimecoind_SOURCES = slimecoind.cpp
+slimecoind_CPPFLAGS = $(AM_CPPFLAGS) $(SLIMECOIN_INCLUDES)
+slimecoind_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+slimecoind_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-telestaid_SOURCES += telestaid-res.rc
+slimecoind_SOURCES += slimecoind-res.rc
 endif
 
-telestaid_LDADD = \
-  $(LIBTELESTAI_SERVER) \
-  $(LIBTELESTAI_COMMON) \
+slimecoind_LDADD = \
+  $(LIBSLIMECOIN_SERVER) \
+  $(LIBSLIMECOIN_COMMON) \
   $(LIBUNIVALUE) \
-  $(LIBTELESTAI_UTIL) \
-  $(LIBTELESTAI_WALLET) \
-  $(LIBTELESTAI_ZMQ) \
-  $(LIBTELESTAI_CONSENSUS) \
-  $(LIBTELESTAI_CRYPTO) \
+  $(LIBSLIMECOIN_UTIL) \
+  $(LIBSLIMECOIN_WALLET) \
+  $(LIBSLIMECOIN_ZMQ) \
+  $(LIBSLIMECOIN_CONSENSUS) \
+  $(LIBSLIMECOIN_CRYPTO) \
   $(LIBLEVELDB) \
   $(LIBLEVELDB_SSE42) \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-telestaid_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
+slimecoind_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
 
-# telestai-cli binary #
-telestai_cli_SOURCES = telestai-cli.cpp
-telestai_cli_CPPFLAGS = $(AM_CPPFLAGS) $(TELESTAI_INCLUDES) $(EVENT_CFLAGS)
-telestai_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-telestai_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# slimecoin-cli binary #
+slimecoin_cli_SOURCES = slimecoin-cli.cpp
+slimecoin_cli_CPPFLAGS = $(AM_CPPFLAGS) $(SLIMECOIN_INCLUDES) $(EVENT_CFLAGS)
+slimecoin_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+slimecoin_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-telestai_cli_SOURCES += telestai-cli-res.rc
+slimecoin_cli_SOURCES += slimecoin-cli-res.rc
 endif
 
-telestai_cli_LDADD = \
-  $(LIBTELESTAI_CLI) \
+slimecoin_cli_LDADD = \
+  $(LIBSLIMECOIN_CLI) \
   $(LIBUNIVALUE) \
-  $(LIBTELESTAI_UTIL) \
-  $(LIBTELESTAI_CRYPTO)
+  $(LIBSLIMECOIN_UTIL) \
+  $(LIBSLIMECOIN_CRYPTO)
 
-telestai_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+slimecoin_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
-# telestai-tx binary #
-telestai_tx_SOURCES = telestai-tx.cpp
-telestai_tx_CPPFLAGS = $(AM_CPPFLAGS) $(TELESTAI_INCLUDES)
-telestai_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-telestai_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# slimecoin-tx binary #
+slimecoin_tx_SOURCES = slimecoin-tx.cpp
+slimecoin_tx_CPPFLAGS = $(AM_CPPFLAGS) $(SLIMECOIN_INCLUDES)
+slimecoin_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+slimecoin_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-telestai_tx_SOURCES += telestai-tx-res.rc
+slimecoin_tx_SOURCES += slimecoin-tx-res.rc
 endif
 
-telestai_tx_LDADD = \
+slimecoin_tx_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBTELESTAI_COMMON) \
-  $(LIBTELESTAI_UTIL) \
-  $(LIBTELESTAI_CONSENSUS) \
-  $(LIBTELESTAI_CRYPTO) \
+  $(LIBSLIMECOIN_COMMON) \
+  $(LIBSLIMECOIN_UTIL) \
+  $(LIBSLIMECOIN_CONSENSUS) \
+  $(LIBSLIMECOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-telestai_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+slimecoin_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
-# telestaiconsensus library #
-if BUILD_TELESTAI_LIBS
-include_HEADERS = script/telestaiconsensus.h
-libtelestaiconsensus_la_SOURCES = $(crypto_libtelestai_crypto_a_SOURCES) $(libtelestai_consensus_a_SOURCES)
+# slimecoinconsensus library #
+if BUILD_SLIMECOIN_LIBS
+include_HEADERS = script/slimecoinconsensus.h
+libslimecoinconsensus_la_SOURCES = $(crypto_libslimecoin_crypto_a_SOURCES) $(libslimecoin_consensus_a_SOURCES)
 
 if GLIBC_BACK_COMPAT
-  libtelestaiconsensus_la_SOURCES += compat/glibc_compat.cpp
+  libslimecoinconsensus_la_SOURCES += compat/glibc_compat.cpp
 endif
 
-libtelestaiconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
-libtelestaiconsensus_la_LIBADD = $(LIBSECP256K1) $(BOOST_LIBS)
-libtelestaiconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_TELESTAI_INTERNAL
-libtelestaiconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libslimecoinconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
+libslimecoinconsensus_la_LIBADD = $(LIBSECP256K1) $(BOOST_LIBS)
+libslimecoinconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_SLIMECOIN_INTERNAL
+libslimecoinconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif
 #
@@ -583,12 +583,12 @@ CLEANFILES += obj/build.h
 EXTRA_DIST = $(CTAES_DIST)
 
 
-config/telestai-config.h: config/stamp-h1
+config/slimecoin-config.h: config/stamp-h1
 	@$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-config/stamp-h1: $(top_srcdir)/$(subdir)/config/telestai-config.h.in $(top_builddir)/config.status
+config/stamp-h1: $(top_srcdir)/$(subdir)/config/slimecoin-config.h.in $(top_builddir)/config.status
 	$(AM_V_at)$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-$(top_srcdir)/$(subdir)/config/telestai-config.h.in:  $(am__configure_deps)
-	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/telestai-config.h.in
+$(top_srcdir)/$(subdir)/config/slimecoin-config.h.in:  $(am__configure_deps)
+	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/slimecoin-config.h.in
 
 clean-local:
 	-$(MAKE) -C secp256k1 clean

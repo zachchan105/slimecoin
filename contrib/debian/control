@@ -1,4 +1,4 @@
-Source: telestai
+Source: slimecoin
 Section: utils
 Priority: optional
 Maintainer: Matt Corallo <matt@mattcorallo.com>
@@ -26,45 +26,45 @@ Build-Depends: debhelper,
  python,
  libzmq3-dev
 Standards-Version: 3.9.2
-Homepage: https://telestai.org/
-Vcs-Git: git://github.com/TelestaiProject/Telestai.git
-Vcs-Browser: https://github.com/TelestaiProject/Telestai
+Homepage: https://slimecoin.org/
+Vcs-Git: git://github.com/SlimecoinProject/Slimecoin.git
+Vcs-Browser: https://github.com/SlimecoinProject/Slimecoin
 
-Package: telestaid
+Package: slimecoind
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
- Telestai is a free open source peer-to-peer electronic cash system that
+ Slimecoin is a free open source peer-to-peer electronic cash system that
  is completely decentralized, without the need for a central server or
  trusted parties.  Users hold the crypto keys to their own money and
  transact directly with each other, with the help of a P2P network to
  check for double-spending.
  .
- This package provides the daemon, telestaid, and the CLI tool
- telestai-cli to interact with the daemon.
+ This package provides the daemon, slimecoind, and the CLI tool
+ slimecoin-cli to interact with the daemon.
 
-Package: telestai-qt
+Package: slimecoin-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - Qt GUI
- Telestai is a free open source peer-to-peer electronic cash system that
+ Slimecoin is a free open source peer-to-peer electronic cash system that
  is completely decentralized, without the need for a central server or
  trusted parties.  Users hold the crypto keys to their own money and
  transact directly with each other, with the help of a P2P network to
  check for double-spending.
  .
- This package provides Telestai-Qt, a GUI for Telestai based on Qt.
+ This package provides Slimecoin-Qt, a GUI for Slimecoin based on Qt.
 
-Package: telestai-tx
+Package: slimecoin-tx
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer digital currency - standalone transaction tool
- Telestai is a free open source peer-to-peer electronic cash system that
+ Slimecoin is a free open source peer-to-peer electronic cash system that
  is completely decentralized, without the need for a central server or
  trusted parties.  Users hold the crypto keys to their own money and
  transact directly with each other, with the help of a P2P network to
  check for double-spending.
  .
- This package provides telestai-tx, a command-line transaction creation
- tool which can be used without a telestai daemon.  Some means of
+ This package provides slimecoin-tx, a command-line transaction creation
+ tool which can be used without a slimecoin daemon.  Some means of
  exchanging minimal transaction data with peers is still required.

@@ -1,10 +1,10 @@
 // Copyright (c) 2015-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_REVERSELOCK_H
-#define TELESTAI_REVERSELOCK_H
+#ifndef SLIMECOIN_REVERSELOCK_H
+#define SLIMECOIN_REVERSELOCK_H
 
 /**
  * An RAII-style reverse lock. Unlocks on construction and locks on destruction.
@@ -32,4 +32,4 @@ private:
     Lock templock;
 };
 
-#endif // TELESTAI_REVERSELOCK_H
+#endif // SLIMECOIN_REVERSELOCK_H

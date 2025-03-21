@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Slimecoin Core
+Comment=Connect to the Slimecoin P2P Network
+Comment[de]=Verbinde mit dem Slimecoin peer-to-peer Netzwerk
+Comment[fr]=Slimecoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Slimecoin, eşten eşe kriptografik sanal para birimi
+Exec=slimecoin-qt %u
+Terminal=false
+Type=Application
+Icon=slimecoin128
+MimeType=x-scheme-handler/slimecoin;
+Categories=Office;Finance;

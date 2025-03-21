@@ -1,4 +1,4 @@
-#include "telestaiunits.h"
+#include "slimecoinunits.h"
 
 #include <QAbstractTableModel>
 #include <QStringList>
@@ -53,7 +53,7 @@ public:
                 TxPlainTextRole,
         /** Unprocessed icon */
                 RawDecorationRole,
-        /** TLS or name of an asset */
+        /** SLM or name of an asset */
                 AssetNameRole,
     };
 

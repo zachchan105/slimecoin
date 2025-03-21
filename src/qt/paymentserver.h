@@ -1,13 +1,13 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_QT_PAYMENTSERVER_H
-#define TELESTAI_QT_PAYMENTSERVER_H
+#ifndef SLIMECOIN_QT_PAYMENTSERVER_H
+#define SLIMECOIN_QT_PAYMENTSERVER_H
 
 // This class handles payment requests from clicking on
-// telestai: URIs
+// slimecoin: URIs
 //
 // This is somewhat tricky, because we have to deal with
 // the situation where the user clicks on a link during
@@ -146,4 +146,4 @@ private:
     OptionsModel *optionsModel;
 };
 
-#endif // TELESTAI_QT_PAYMENTSERVER_H
+#endif // SLIMECOIN_QT_PAYMENTSERVER_H

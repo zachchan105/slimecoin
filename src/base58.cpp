@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -214,13 +214,13 @@ int CBase58Data::CompareTo(const CBase58Data& b58) const
 namespace
 {
 
-class CTelestaiAddressVisitor : public boost::static_visitor<bool>
+class CSlimecoinAddressVisitor : public boost::static_visitor<bool>
 {
 private:
-    CTelestaiAddress* addr;
+    CSlimecoinAddress* addr;
 
 public:
-    explicit CTelestaiAddressVisitor(CTelestaiAddress* addrIn) : addr(addrIn) {}
+    explicit CSlimecoinAddressVisitor(CSlimecoinAddress* addrIn) : addr(addrIn) {}
 
     bool operator()(const CKeyID& id) const { return addr->Set(id); }
     bool operator()(const CScriptID& id) const { return addr->Set(id); }
@@ -229,29 +229,29 @@ public:
 
 } // namespace
 
-bool CTelestaiAddress::Set(const CKeyID& id)
+bool CSlimecoinAddress::Set(const CKeyID& id)
 {
     SetData(GetParams().Base58Prefix(CChainParams::PUBKEY_ADDRESS), &id, 20);
     return true;
 }
 
-bool CTelestaiAddress::Set(const CScriptID& id)
+bool CSlimecoinAddress::Set(const CScriptID& id)
 {
     SetData(GetParams().Base58Prefix(CChainParams::SCRIPT_ADDRESS), &id, 20);
     return true;
 }
 
-bool CTelestaiAddress::Set(const CTxDestination& dest)
+bool CSlimecoinAddress::Set(const CTxDestination& dest)
 {
-    return boost::apply_visitor(CTelestaiAddressVisitor(this), dest);
+    return boost::apply_visitor(CSlimecoinAddressVisitor(this), dest);
 }
 
-bool CTelestaiAddress::IsValid() const
+bool CSlimecoinAddress::IsValid() const
 {
     return IsValid(GetParams());
 }
 
-bool CTelestaiAddress::IsValid(const CChainParams& params) const
+bool CSlimecoinAddress::IsValid(const CChainParams& params) const
 {
     bool fCorrectSize = vchData.size() == 20;
     bool fKnownVersion = vchVersion == params.Base58Prefix(CChainParams::PUBKEY_ADDRESS) ||
@@ -260,7 +260,7 @@ bool CTelestaiAddress::IsValid(const CChainParams& params) const
     return fCorrectSize && fKnownVersion;
 }
 
-CTxDestination CTelestaiAddress::Get() const
+CTxDestination CSlimecoinAddress::Get() const
 {
     if (!IsValid())
         return CNoDestination();
@@ -274,7 +274,7 @@ CTxDestination CTelestaiAddress::Get() const
         return CNoDestination();
 }
 
-bool CTelestaiAddress::GetIndexKey(uint160& hashBytes, int& type) const
+bool CSlimecoinAddress::GetIndexKey(uint160& hashBytes, int& type) const
 {
     if (!IsValid()) {
         return false;
@@ -291,7 +291,7 @@ bool CTelestaiAddress::GetIndexKey(uint160& hashBytes, int& type) const
     return false;
 }
 
-void CTelestaiSecret::SetKey(const CKey& vchSecret)
+void CSlimecoinSecret::SetKey(const CKey& vchSecret)
 {
     assert(vchSecret.IsValid());
     SetData(GetParams().Base58Prefix(CChainParams::SECRET_KEY), vchSecret.begin(), vchSecret.size());
@@ -299,7 +299,7 @@ void CTelestaiSecret::SetKey(const CKey& vchSecret)
         vchData.push_back(1);
 }
 
-CKey CTelestaiSecret::GetKey()
+CKey CSlimecoinSecret::GetKey()
 {
     CKey ret;
     assert(vchData.size() >= 32);
@@ -307,7 +307,7 @@ CKey CTelestaiSecret::GetKey()
     return ret;
 }
 
-bool CTelestaiSecret::IsValid() const
+bool CSlimecoinSecret::IsValid() const
 {
         bool fExpectedFormat = vchData.size() == 32 || (vchData.size() == 33 && vchData[32] == 1);
         bool fCorrectVersion = vchVersion == GetParams().Base58Prefix(CChainParams::SECRET_KEY);
@@ -315,34 +315,34 @@ bool CTelestaiSecret::IsValid() const
         return fExpectedFormat && fCorrectVersion;
 }
 
-bool CTelestaiSecret::SetString(const char* pszSecret)
+bool CSlimecoinSecret::SetString(const char* pszSecret)
 {
     return CBase58Data::SetString(pszSecret) && IsValid();
 }
 
-bool CTelestaiSecret::SetString(const std::string& strSecret)
+bool CSlimecoinSecret::SetString(const std::string& strSecret)
 {
     return SetString(strSecret.c_str());
 }
 
 std::string EncodeDestination(const CTxDestination& dest)
 {
-    CTelestaiAddress addr(dest);
+    CSlimecoinAddress addr(dest);
     if (!addr.IsValid()) return "";
     return addr.ToString();
 }
 
 CTxDestination DecodeDestination(const std::string& str)
 {
-    return CTelestaiAddress(str).Get();
+    return CSlimecoinAddress(str).Get();
 }
 
 bool IsValidDestinationString(const std::string& str, const CChainParams& params)
 {
-    return CTelestaiAddress(str).IsValid(params);
+    return CSlimecoinAddress(str).IsValid(params);
 }
 
 bool IsValidDestinationString(const std::string& str)
 {
-    return CTelestaiAddress(str).IsValid();
+    return CSlimecoinAddress(str).IsValid();
 }

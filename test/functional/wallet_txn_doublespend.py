@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 # Copyright (c) 2014-2016 The Bitcoin Core developers
-# Copyright (c) 2017-2020 The Telestai Core developers
+# Copyright (c) 2017-2020 The Slimecoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 """Test the wallet accounts properly when there is a double-spend conflict."""
 
-from test_framework.test_framework import TelestaiTestFramework
+from test_framework.test_framework import SlimecoinTestFramework
 from test_framework.util import disconnect_nodes, assert_equal, Decimal, sync_blocks, find_output, connect_nodes
 
-class TxnMallTest(TelestaiTestFramework):
+class TxnMallTest(SlimecoinTestFramework):
     def set_test_params(self):
         self.num_nodes = 4
         self.extra_args = [["-maxreorg=10000"], ["-maxreorg=10000"], ["-maxreorg=10000"], ["-maxreorg=10000"]]
@@ -25,7 +25,7 @@ class TxnMallTest(TelestaiTestFramework):
         disconnect_nodes(self.nodes[2], 1)
 
     def run_test(self):
-        # All nodes should start with 8,775 TLS:
+        # All nodes should start with 8,775 SLM:
         starting_balance = 8775
         for i in range(4):
             assert_equal(self.nodes[i].getbalance(), starting_balance)
@@ -46,7 +46,7 @@ class TxnMallTest(TelestaiTestFramework):
         # Coins are sent to node1_address
         node1_address = self.nodes[1].getnewaddress("from0")
 
-        # First: use raw transaction API to send 1240 TLS to node1_address,
+        # First: use raw transaction API to send 1240 SLM to node1_address,
         # but don't broadcast:
         doublespend_fee = Decimal('-.02')
         rawtx_input_0 = {"txid": fund_foo_txid, "vout": find_output(self.nodes[0], fund_foo_txid, 8449)}
@@ -58,7 +58,7 @@ class TxnMallTest(TelestaiTestFramework):
         doublespend = self.nodes[0].signrawtransaction(rawtx)
         assert_equal(doublespend["complete"], True)
 
-        # Create two spends using 1 50 TLS coin each
+        # Create two spends using 1 50 SLM coin each
         txid1 = self.nodes[0].sendfrom("foo", node1_address, 400, 0)
         txid2 = self.nodes[0].sendfrom("bar", node1_address, 200, 0)
         

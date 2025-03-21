@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_QT_ADDRESSTABLEMODEL_H
-#define TELESTAI_QT_ADDRESSTABLEMODEL_H
+#ifndef SLIMECOIN_QT_ADDRESSTABLEMODEL_H
+#define SLIMECOIN_QT_ADDRESSTABLEMODEL_H
 
 #include <QAbstractTableModel>
 #include <QStringList>
@@ -27,7 +27,7 @@ public:
 
     enum ColumnIndex {
         Label = 0,   /**< User specified label */
-        Address = 1  /**< Telestai address */
+        Address = 1  /**< Slimecoin address */
     };
 
     enum RoleIndex {
@@ -93,4 +93,4 @@ public Q_SLOTS:
     friend class AddressTablePriv;
 };
 
-#endif // TELESTAI_QT_ADDRESSTABLEMODEL_H
+#endif // SLIMECOIN_QT_ADDRESSTABLEMODEL_H

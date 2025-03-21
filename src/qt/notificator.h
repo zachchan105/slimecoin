@@ -1,13 +1,13 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_QT_NOTIFICATOR_H
-#define TELESTAI_QT_NOTIFICATOR_H
+#ifndef SLIMECOIN_QT_NOTIFICATOR_H
+#define SLIMECOIN_QT_NOTIFICATOR_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/telestai-config.h"
+#include "config/slimecoin-config.h"
 #endif
 
 #include <QIcon>
@@ -75,4 +75,4 @@ private:
 #endif
 };
 
-#endif // TELESTAI_QT_NOTIFICATOR_H
+#endif // SLIMECOIN_QT_NOTIFICATOR_H

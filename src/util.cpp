@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/telestai-config.h"
+#include "config/slimecoin-config.h"
 #endif
 
 #include "util.h"
@@ -88,8 +88,8 @@
 // Application startup time (used for uptime calculation)
 const int64_t nStartupTime = GetTime();
 
-const char *const TELESTAI_CONF_FILENAME = "telestai.conf";
-const char *const TELESTAI_PID_FILENAME = "telestaid.pid";
+const char *const SLIMECOIN_CONF_FILENAME = "slimecoin.conf";
+const char *const SLIMECOIN_PID_FILENAME = "slimecoind.pid";
 
 ArgsManager gArgs;
 bool fPrintToConsole = false;
@@ -530,7 +530,7 @@ static std::string FormatException(const std::exception *pex, const char *pszThr
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(nullptr, pszModule, sizeof(pszModule));
 #else
-    const char *pszModule = "telestai";
+    const char *pszModule = "slimecoin";
 #endif
     if (pex)
         return strprintf(
@@ -549,13 +549,13 @@ void PrintExceptionContinue(const std::exception *pex, const char *pszThread)
 
 fs::path GetDefaultDataDir()
 {
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\Telestai
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\Telestai
-    // Mac: ~/Library/Application Support/Telestai
-    // Unix: ~/.telestai
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\Slimecoin
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\Slimecoin
+    // Mac: ~/Library/Application Support/Slimecoin
+    // Unix: ~/.slimecoin
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "Telestai";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "Slimecoin";
 #else
     fs::path pathRet;
     char *pszHome = getenv("HOME");
@@ -565,10 +565,10 @@ fs::path GetDefaultDataDir()
         pathRet = fs::path(pszHome);
 #ifdef MAC_OSX
     // Mac
-    return pathRet / "Library/Application Support/Telestai";
+    return pathRet / "Library/Application Support/Slimecoin";
 #else
     // Unix
-    return pathRet / ".telestai";
+    return pathRet / ".slimecoin";
 #endif
 #endif
 }
@@ -630,7 +630,7 @@ void ArgsManager::ReadConfigFile(const std::string &confPath)
 {
     fs::ifstream streamConfig(GetConfigFile(confPath));
     if (!streamConfig.good())
-        return; // No telestai.conf file is OK
+        return; // No slimecoin.conf file is OK
 
     {
         LOCK(cs_args);
@@ -639,7 +639,7 @@ void ArgsManager::ReadConfigFile(const std::string &confPath)
 
         for (boost::program_options::detail::config_file_iterator it(streamConfig, setOptions), end; it != end; ++it)
         {
-            // Don't overwrite existing settings so command line settings override telestai.conf
+            // Don't overwrite existing settings so command line settings override slimecoin.conf
             std::string strKey = std::string("-") + it->string_key;
             std::string strValue = it->value[0];
             InterpretNegativeSetting(strKey, strValue);
@@ -656,7 +656,7 @@ void ArgsManager::ReadConfigFile(const std::string &confPath)
 
 fs::path GetPidFile()
 {
-    fs::path pathPidFile(gArgs.GetArg("-pid", TELESTAI_PID_FILENAME));
+    fs::path pathPidFile(gArgs.GetArg("-pid", SLIMECOIN_PID_FILENAME));
     if (!pathPidFile.is_absolute()) pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;
 }
@@ -926,10 +926,10 @@ std::string CopyrightHolders(const std::string &strPrefix)
 {
     std::string strCopyrightHolders = strPrefix + strprintf(_(COPYRIGHT_HOLDERS), _(COPYRIGHT_HOLDERS_SUBSTITUTION));
 
-    // Check for untranslated substitution to make sure Telestai Core copyright is not removed by accident
-    if (strprintf(COPYRIGHT_HOLDERS, COPYRIGHT_HOLDERS_SUBSTITUTION).find("Telestai Core") == std::string::npos)
+    // Check for untranslated substitution to make sure Slimecoin Core copyright is not removed by accident
+    if (strprintf(COPYRIGHT_HOLDERS, COPYRIGHT_HOLDERS_SUBSTITUTION).find("Slimecoin Core") == std::string::npos)
     {
-        strCopyrightHolders += "\n" + strPrefix + "The Telestai Core developers";
+        strCopyrightHolders += "\n" + strPrefix + "The Slimecoin Core developers";
     }
     return strCopyrightHolders;
 }

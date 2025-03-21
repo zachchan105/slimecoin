@@ -1,11 +1,11 @@
-// Copyright (c) 2019-2021 The Telestai Core developers
+// Copyright (c) 2019-2021 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "restrictedfreezeaddress.h"
 #include "ui_restrictedfreezeaddress.h"
 
-#include "telestaiunits.h"
+#include "slimecoinunits.h"
 #include "clientmodel.h"
 #include "guiconstants.h"
 #include "guiutil.h"

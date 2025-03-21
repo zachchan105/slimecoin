@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2021 The Telestai Core developers
+// Copyright (c) 2017-2021 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_TXDB_H
-#define TELESTAI_TXDB_H
+#ifndef SLIMECOIN_TXDB_H
+#define SLIMECOIN_TXDB_H
 
 #include "coins.h"
 #include "dbwrapper.h"
@@ -149,4 +149,4 @@ public:
     bool LoadBlockIndexGuts(const Consensus::Params& consensusParams, std::function<CBlockIndex*(const uint256&)> insertBlockIndex);
 };
 
-#endif // TELESTAI_TXDB_H
+#endif // SLIMECOIN_TXDB_H

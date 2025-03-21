@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_MERKLEBLOCK_H
-#define TELESTAI_MERKLEBLOCK_H
+#ifndef SLIMECOIN_MERKLEBLOCK_H
+#define SLIMECOIN_MERKLEBLOCK_H
 
 #include "serialize.h"
 #include "uint256.h"
@@ -165,4 +165,4 @@ private:
     CMerkleBlock(const CBlock& block, CBloomFilter* filter, const std::set<uint256>* txids);
 };
 
-#endif // TELESTAI_MERKLEBLOCK_H
+#endif // SLIMECOIN_MERKLEBLOCK_H

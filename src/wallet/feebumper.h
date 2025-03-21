@@ -1,10 +1,10 @@
 // Copyright (c) 2017 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_WALLET_FEEBUMPER_H
-#define TELESTAI_WALLET_FEEBUMPER_H
+#ifndef SLIMECOIN_WALLET_FEEBUMPER_H
+#define SLIMECOIN_WALLET_FEEBUMPER_H
 
 #include <primitives/transaction.h>
 
@@ -59,4 +59,4 @@ private:
     CAmount nNewFee;
 };
 
-#endif // TELESTAI_WALLET_FEEBUMPER_H
+#endif // SLIMECOIN_WALLET_FEEBUMPER_H

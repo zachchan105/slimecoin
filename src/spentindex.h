@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_SPENTINDEX_H
-#define TELESTAI_SPENTINDEX_H
+#ifndef SLIMECOIN_SPENTINDEX_H
+#define SLIMECOIN_SPENTINDEX_H
 
 #include "uint256.h"
 #include "amount.h"
@@ -95,4 +95,4 @@ struct CSpentIndexKeyCompare
     }
 };
 
-#endif // TELESTAI_SPENTINDEX_H
+#endif // SLIMECOIN_SPENTINDEX_H

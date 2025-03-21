@@ -1,10 +1,10 @@
 // Copyright (c) 2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_POLICY_RBF_H
-#define TELESTAI_POLICY_RBF_H
+#ifndef SLIMECOIN_POLICY_RBF_H
+#define SLIMECOIN_POLICY_RBF_H
 
 #include "txmempool.h"
 
@@ -26,4 +26,4 @@ bool SignalsOptInRBF(const CTransaction &tx);
 // as the sequence numbers of all in-mempool ancestors.
 RBFTransactionState IsRBFOptIn(const CTransaction &tx, CTxMemPool &pool);
 
-#endif // TELESTAI_POLICY_RBF_H
+#endif // SLIMECOIN_POLICY_RBF_H

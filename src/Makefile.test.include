@@ -1,14 +1,14 @@
 # Copyright (c) 2013-2016 The Bitcoin Core developers
-# Copyright (c) 2017-2019 The Telestai Core developers
+# Copyright (c) 2017-2019 The Slimecoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-TESTS += test/test_telestai
-bin_PROGRAMS += test/test_telestai
-noinst_PROGRAMS += test/test_telestai_fuzzy
-noinst_PROGRAMS += test/test_telestai_hash
+TESTS += test/test_slimecoin
+bin_PROGRAMS += test/test_slimecoin
+noinst_PROGRAMS += test/test_slimecoin_fuzzy
+noinst_PROGRAMS += test/test_slimecoin_hash
 TEST_SRCDIR = test
-TEST_BINARY=test/test_telestai$(EXEEXT)
+TEST_BINARY=test/test_slimecoin$(EXEEXT)
 
 JSON_TEST_FILES = \
   test/data/script_tests.json \
@@ -23,8 +23,8 @@ RAW_TEST_FILES =
 
 GENERATED_TEST_FILES = $(JSON_TEST_FILES:.json=.json.h) $(RAW_TEST_FILES:.raw=.raw.h)
 
-# test_telestai binary #
-TELESTAI_TESTS =\
+# test_slimecoin binary #
+SLIMECOIN_TESTS =\
   test/assets/asset_tests.cpp \
   test/assets/serialization_tests.cpp \
   test/assets/asset_tx_tests.cpp \
@@ -89,9 +89,9 @@ TELESTAI_TESTS =\
   test/sigopcount_tests.cpp \
   test/skiplist_tests.cpp \
   test/streams_tests.cpp \
-  test/test_telestai.cpp \
-  test/test_telestai.h \
-  test/test_telestai_main.cpp \
+  test/test_slimecoin.cpp \
+  test/test_slimecoin.h \
+  test/test_slimecoin_main.cpp \
   test/timedata_tests.cpp \
   test/torcontrol_tests.cpp \
   test/transaction_tests.cpp \
@@ -102,7 +102,7 @@ TELESTAI_TESTS =\
   test/util_tests.cpp
 
 if ENABLE_WALLET
-TELESTAI_TESTS += \
+SLIMECOIN_TESTS += \
   wallet/test/wallet_test_fixture.cpp \
   wallet/test/wallet_test_fixture.h \
   wallet/test/accounting_tests.cpp \
@@ -110,77 +110,77 @@ TELESTAI_TESTS += \
   wallet/test/crypto_tests.cpp
 endif
 
-test_test_telestai_SOURCES = $(TELESTAI_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
-test_test_telestai_CPPFLAGS = $(AM_CPPFLAGS) $(TELESTAI_INCLUDES) -I$(builddir)/test/ $(TESTDEFS) $(EVENT_CFLAGS)
-test_test_telestai_LDADD =
+test_test_slimecoin_SOURCES = $(SLIMECOIN_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
+test_test_slimecoin_CPPFLAGS = $(AM_CPPFLAGS) $(SLIMECOIN_INCLUDES) -I$(builddir)/test/ $(TESTDEFS) $(EVENT_CFLAGS)
+test_test_slimecoin_LDADD =
 if ENABLE_WALLET
-test_test_telestai_LDADD += $(LIBTELESTAI_WALLET)
+test_test_slimecoin_LDADD += $(LIBSLIMECOIN_WALLET)
 endif
-test_test_telestai_LDADD += $(LIBTELESTAI_SERVER) $(LIBTELESTAI_CLI) $(LIBTELESTAI_COMMON) $(LIBTELESTAI_UTIL) $(LIBTELESTAI_CONSENSUS) $(LIBTELESTAI_CRYPTO) $(LIBUNIVALUE) \
+test_test_slimecoin_LDADD += $(LIBSLIMECOIN_SERVER) $(LIBSLIMECOIN_CLI) $(LIBSLIMECOIN_COMMON) $(LIBSLIMECOIN_UTIL) $(LIBSLIMECOIN_CONSENSUS) $(LIBSLIMECOIN_CRYPTO) $(LIBUNIVALUE) \
   $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) $(BOOST_LIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIB) $(LIBSECP256K1) $(EVENT_LIBS) $(EVENT_PTHREADS_LIBS)
-test_test_telestai_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+test_test_slimecoin_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
-test_test_telestai_LDADD += $(LIBTELESTAI_CONSENSUS) $(LIBTELESTAI_CRYPTO) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
-test_test_telestai_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) -static
+test_test_slimecoin_LDADD += $(LIBSLIMECOIN_CONSENSUS) $(LIBSLIMECOIN_CRYPTO) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
+test_test_slimecoin_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) -static
 
 if ENABLE_ZMQ
-test_test_telestai_LDADD += $(ZMQ_LIBS)
+test_test_slimecoin_LDADD += $(ZMQ_LIBS)
 endif
 #
 
-# test_telestai_fuzzy binary #
-test_test_telestai_fuzzy_SOURCES = test/test_telestai_fuzzy.cpp
-test_test_telestai_fuzzy_CPPFLAGS = $(AM_CPPFLAGS) $(TELESTAI_INCLUDES)
-test_test_telestai_fuzzy_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-test_test_telestai_fuzzy_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# test_slimecoin_fuzzy binary #
+test_test_slimecoin_fuzzy_SOURCES = test/test_slimecoin_fuzzy.cpp
+test_test_slimecoin_fuzzy_CPPFLAGS = $(AM_CPPFLAGS) $(SLIMECOIN_INCLUDES)
+test_test_slimecoin_fuzzy_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+test_test_slimecoin_fuzzy_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
-test_test_telestai_fuzzy_LDADD = \
+test_test_slimecoin_fuzzy_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBTELESTAI_SERVER) \
-  $(LIBTELESTAI_COMMON) \
-  $(LIBTELESTAI_UTIL) \
-  $(LIBTELESTAI_CONSENSUS) \
-  $(LIBTELESTAI_CRYPTO) \
+  $(LIBSLIMECOIN_SERVER) \
+  $(LIBSLIMECOIN_COMMON) \
+  $(LIBSLIMECOIN_UTIL) \
+  $(LIBSLIMECOIN_CONSENSUS) \
+  $(LIBSLIMECOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-test_test_telestai_fuzzy_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+test_test_slimecoin_fuzzy_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
-# test_telestai_hash binary #
-test_test_telestai_hash_SOURCES = test/test_telestai_hash.cpp
-test_test_telestai_hash_CPPFLAGS = $(AM_CPPFLAGS) $(TELESTAI_INCLUDES)
-test_test_telestai_hash_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-test_test_telestai_hash_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_AP_LDFLAGS)
+# test_slimecoin_hash binary #
+test_test_slimecoin_hash_SOURCES = test/test_slimecoin_hash.cpp
+test_test_slimecoin_hash_CPPFLAGS = $(AM_CPPFLAGS) $(SLIMECOIN_INCLUDES)
+test_test_slimecoin_hash_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+test_test_slimecoin_hash_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_AP_LDFLAGS)
 
-test_test_telestai_hash_LDADD = \
+test_test_slimecoin_hash_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBTELESTAI_COMMON) \
-  $(LIBTELESTAI_UTIL) \
-  $(LIBTELESTAI_CONSENSUS) \
-  $(LIBTELESTAI_CRYPTO)
+  $(LIBSLIMECOIN_COMMON) \
+  $(LIBSLIMECOIN_UTIL) \
+  $(LIBSLIMECOIN_CONSENSUS) \
+  $(LIBSLIMECOIN_CRYPTO)
 
-test_test_telestai_hash_LDADD += $(CRYPTO_LIBS)
+test_test_slimecoin_hash_LDADD += $(CRYPTO_LIBS)
 #
 
-nodist_test_test_telestai_SOURCES = $(GENERATED_TEST_FILES)
+nodist_test_test_slimecoin_SOURCES = $(GENERATED_TEST_FILES)
 
-$(TELESTAI_TESTS): $(GENERATED_TEST_FILES)
+$(SLIMECOIN_TESTS): $(GENERATED_TEST_FILES)
 
-CLEAN_TELESTAI_TEST = test/*.gcda test/*.gcno $(GENERATED_TEST_FILES)
+CLEAN_SLIMECOIN_TEST = test/*.gcda test/*.gcno $(GENERATED_TEST_FILES)
 
-CLEANFILES += $(CLEAN_TELESTAI_TEST)
+CLEANFILES += $(CLEAN_SLIMECOIN_TEST)
 
-telestai_test: $(TEST_BINARY)
+slimecoin_test: $(TEST_BINARY)
 
-telestai_test_check: $(TEST_BINARY) FORCE
+slimecoin_test_check: $(TEST_BINARY) FORCE
 	$(MAKE) check-TESTS TESTS=$^
 
-telestai_test_clean : FORCE
-	rm -f $(CLEAN_TELESTAI_TEST) $(test_test_telestai_OBJECTS) $(TEST_BINARY)
+slimecoin_test_clean : FORCE
+	rm -f $(CLEAN_SLIMECOIN_TEST) $(test_test_slimecoin_OBJECTS) $(TEST_BINARY)
 
 check-local:
-	@echo "Running test/util/telestai-util-test.py..."
-	$(PYTHON) $(top_builddir)/test/util/telestai-util-test.py
+	@echo "Running test/util/slimecoin-util-test.py..."
+	$(PYTHON) $(top_builddir)/test/util/slimecoin-util-test.py
 	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C secp256k1 check
 if EMBEDDED_UNIVALUE
 	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C univalue check

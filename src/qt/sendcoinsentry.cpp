@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -41,9 +41,9 @@ SendCoinsEntry::SendCoinsEntry(const PlatformStyle *_platformStyle, QWidget *par
     ui->addAsLabel->setPlaceholderText(tr("Enter a label for this address to add it to your address book"));
 #endif
 
-    // normal telestai address field
+    // normal slimecoin address field
     GUIUtil::setupAddressWidget(ui->payTo, this);
-    // just a label for displaying telestai address(es)
+    // just a label for displaying slimecoin address(es)
     ui->payTo_is->setFont(GUIUtil::getSubLabelFont());
 
     // Connect signals
@@ -134,7 +134,7 @@ void SendCoinsEntry::clear()
     ui->memoTextLabel_s->clear();
     ui->payAmount_s->clear();
 
-    // update the display unit, to not use the default ("TLS")
+    // update the display unit, to not use the default ("SLM")
     updateDisplayUnit();
 }
 

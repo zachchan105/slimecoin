@@ -281,7 +281,7 @@
         <cursorShape>IBeamCursor</cursorShape>
        </property>
        <property name="text">
-        <string notr="true">123.456 TLS</string>
+        <string notr="true">123.456 SLM</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -293,7 +293,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../telestai.qrc"/>
+  <include location="../slimecoin.qrc"/>
  </resources>
  <connections/>
 </ui>

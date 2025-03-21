@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_PUBKEY_H
-#define TELESTAI_PUBKEY_H
+#ifndef SLIMECOIN_PUBKEY_H
+#define SLIMECOIN_PUBKEY_H
 
 #include "hash.h"
 #include "serialize.h"
@@ -248,4 +248,4 @@ public:
     ~ECCVerifyHandle();
 };
 
-#endif // TELESTAI_PUBKEY_H
+#endif // SLIMECOIN_PUBKEY_H

@@ -1,5 +1,5 @@
-#ifndef TELESTAI_QT_TEST_WALLETTESTS_H
-#define TELESTAI_QT_TEST_WALLETTESTS_H
+#ifndef SLIMECOIN_QT_TEST_WALLETTESTS_H
+#define SLIMECOIN_QT_TEST_WALLETTESTS_H
 
 #include <QObject>
 #include <QTest>
@@ -12,4 +12,4 @@ private Q_SLOTS:
     void walletTests();
 };
 
-#endif // TELESTAI_QT_TEST_WALLETTESTS_H
+#endif // SLIMECOIN_QT_TEST_WALLETTESTS_H

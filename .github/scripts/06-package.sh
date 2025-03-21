@@ -15,7 +15,7 @@ if [[ ! ${OS} || ! ${GITHUB_WORKSPACE} || ! ${GITHUB_BASE_REF} ]]; then
 fi
 
 cd ${GITHUB_WORKSPACE}
-PKGVERSION=`grep "PACKAGE_VERSION" src/config/telestai-config.h | cut -d\" -f2`
+PKGVERSION=`grep "PACKAGE_VERSION" src/config/slimecoin-config.h | cut -d\" -f2`
 VERSION="${PKGVERSION}"
 SHORTHASH=`git rev-parse --short HEAD`
 RELEASE_LOCATION="${GITHUB_WORKSPACE}/release"
@@ -34,9 +34,9 @@ echo "GITHUB_BASE_REF: ${GITHUB_BASE_REF}"
 echo "----------------------------------------"
 
 if [[ ${GITHUB_BASE_REF} =~ "release" ]]; then
-    DISTNAME="telestai-${VERSION}"
+    DISTNAME="slimecoin-${VERSION}"
 else
-    DISTNAME="telestai-${VERSION}-${SHORTHASH}"
+    DISTNAME="slimecoin-${VERSION}-${SHORTHASH}"
 fi
 
 echo "----------------------------------------"
@@ -89,7 +89,7 @@ if [[ ${OS} == "windows" ]]; then
         fi
     done
 
-    for rmfile in detach-sig-create.sh win-codesign.cert telestai-cli.exe telestai-qt.exe telestaid.exe; do
+    for rmfile in detach-sig-create.sh win-codesign.cert slimecoin-cli.exe slimecoin-qt.exe slimecoind.exe; do
         if [[ -e ${rmfile} ]]; then
             rm -f ${rmfile}
         fi
@@ -103,8 +103,8 @@ elif [[ ${OS} == "osx" ]]; then
 
     make deploydir
 
-    if [[ -e ${GITHUB_WORKSPACE}/dist/Telestai-Qt.app/Contents/MacOS/install_cli.sh ]]; then
-        chmod +x ${GITHUB_WORKSPACE}/dist/Telestai-Qt.app/Contents/MacOS/install_cli.sh
+    if [[ -e ${GITHUB_WORKSPACE}/dist/Slimecoin-Qt.app/Contents/MacOS/install_cli.sh ]]; then
+        chmod +x ${GITHUB_WORKSPACE}/dist/Slimecoin-Qt.app/Contents/MacOS/install_cli.sh
     fi
 
     mkdir -p unsigned-app-${DISTNAME}
@@ -123,7 +123,7 @@ elif [[ ${OS} == "osx" ]]; then
 
     make deploy
 
-    ${GITHUB_WORKSPACE}/depends/x86_64-apple-darwin14/native/bin/dmg dmg "Telestai-Core.dmg" ${RELEASE_LOCATION}/${DISTNAME}-osx-unsigned.dmg
+    ${GITHUB_WORKSPACE}/depends/x86_64-apple-darwin14/native/bin/dmg dmg "Slimecoin-Core.dmg" ${RELEASE_LOCATION}/${DISTNAME}-osx-unsigned.dmg
 
     cd ${STAGE_DIR}
     find . -name "lib*.la" -delete
@@ -208,8 +208,8 @@ elif [[ ${OS} == "arm32v7" || ${OS} == "arm32v7-disable-wallet" ]]; then
             exit 1
         fi
         cd ${STAGE_DIR}
-        cp -Rf ${DISTNAME}/bin/telestaid .
-        cp -Rf ${DISTNAME}/bin/telestai-cli .
+        cp -Rf ${DISTNAME}/bin/slimecoind .
+        cp -Rf ${DISTNAME}/bin/slimecoin-cli .
     else
         echo "release directory doesn't exist"
     fi
@@ -244,8 +244,8 @@ elif [[ ${OS} == "aarch64" || ${OS} == "aarch64-disable-wallet" ]]; then
             exit 1
         fi
         cd ${STAGE_DIR}
-        cp -Rf ${DISTNAME}/bin/telestaid .
-        cp -Rf ${DISTNAME}/bin/telestai-cli .
+        cp -Rf ${DISTNAME}/bin/slimecoind .
+        cp -Rf ${DISTNAME}/bin/slimecoin-cli .
     else
         echo "release directory doesn't exist"
     fi

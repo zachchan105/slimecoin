@@ -1,10 +1,10 @@
 // Copyright (c) 2017 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_FS_H
-#define TELESTAI_FS_H
+#ifndef SLIMECOIN_FS_H
+#define SLIMECOIN_FS_H
 
 #include <stdio.h>
 #include <string>
@@ -25,4 +25,4 @@ namespace fsbridge {
     FILE *freopen(const fs::path& p, const char *mode, FILE *stream);
 };
 
-#endif // TELESTAI_FS_H
+#endif // SLIMECOIN_FS_H

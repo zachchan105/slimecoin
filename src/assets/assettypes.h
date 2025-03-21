@@ -1,9 +1,9 @@
-// Copyright (c) 2019 The Telestai Core developers
+// Copyright (c) 2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAICOIN_NEWASSET_H
-#define TELESTAICOIN_NEWASSET_H
+#ifndef SLIMECOINCOIN_NEWASSET_H
+#define SLIMECOINCOIN_NEWASSET_H
 
 #include <string>
 #include <sstream>
@@ -652,4 +652,4 @@ private:
     size_t maxSize;
 };
 
-#endif //TELESTAICOIN_NEWASSET_H
+#endif //SLIMECOINCOIN_NEWASSET_H

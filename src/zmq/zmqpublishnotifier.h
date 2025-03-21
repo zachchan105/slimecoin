@@ -1,10 +1,10 @@
 // Copyright (c) 2015-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_ZMQ_ZMQPUBLISHNOTIFIER_H
-#define TELESTAI_ZMQ_ZMQPUBLISHNOTIFIER_H
+#ifndef SLIMECOIN_ZMQ_ZMQPUBLISHNOTIFIER_H
+#define SLIMECOIN_ZMQ_ZMQPUBLISHNOTIFIER_H
 
 #include "zmqabstractnotifier.h"
 
@@ -60,4 +60,4 @@ public:
     bool NotifyMessage(const CMessage& message) override;
 };
 
-#endif // TELESTAI_ZMQ_ZMQPUBLISHNOTIFIER_H
+#endif // SLIMECOIN_ZMQ_ZMQPUBLISHNOTIFIER_H

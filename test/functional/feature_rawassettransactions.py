@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Copyright (c) 2014-2016 The Bitcoin Core developers
-# Copyright (c) 2017-2020 The Telestai Core developers
+# Copyright (c) 2017-2020 The Slimecoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,7 +10,7 @@ Test the rawtransaction RPCs for asset transactions.
 
 import math
 from io import BytesIO
-from test_framework.test_framework import TelestaiTestFramework
+from test_framework.test_framework import SlimecoinTestFramework
 from test_framework.util import assert_equal, assert_raises_rpc_error, assert_is_hash_string, assert_does_not_contain_key, assert_contains_key, assert_contains_pair
 from test_framework.mininode import CTransaction, hex_str_to_bytes, bytes_to_hex_str, CScriptReissue, CScriptOwner, CScriptTransfer, CTxOut, CScriptIssue
 
@@ -56,13 +56,13 @@ def get_tx_issue_hex(self, node, asset_name, asset_quantity, asset_units=0):
 
 
 # noinspection PyTypeChecker
-class RawAssetTransactionsTest(TelestaiTestFramework):
+class RawAssetTransactionsTest(SlimecoinTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 3
 
     def activate_assets(self):
-        self.log.info("Generating TLS for node[0] and activating assets...")
+        self.log.info("Generating SLM for node[0] and activating assets...")
         n0 = self.nodes[0]
 
         n0.generate(1)
@@ -274,7 +274,7 @@ class RawAssetTransactionsTest(TelestaiTestFramework):
                 tx.vout[n].scriptPubKey = hex_str_to_bytes(tampered_script)
         tx_bad_issue = bytes_to_hex_str(tx.serialize())
         tx_bad_issue_signed = n0.signrawtransaction(tx_bad_issue)['hex']
-        assert_raises_rpc_error(-26, "bad-txns-op-tls-asset-not-in-right-script-location",
+        assert_raises_rpc_error(-26, "bad-txns-op-slm-asset-not-in-right-script-location",
                                 n0.sendrawtransaction, tx_bad_issue_signed)
 
         ########################################
@@ -1496,9 +1496,9 @@ class RawAssetTransactionsTest(TelestaiTestFramework):
         balance2 = float(n2.getwalletinfo()['balance'])
 
         ########################################
-        # tls for assets
+        # slm for assets
 
-        # n1 buys 400 ANDUIN from n2 for 300 TLS
+        # n1 buys 400 ANDUIN from n2 for 300 SLM
         price = 300
         amount = 400
         fee = 0.01
@@ -1545,9 +1545,9 @@ class RawAssetTransactionsTest(TelestaiTestFramework):
         assert_equal(starting_amount - amount, int(n2.listmyassets()[anduin]))
 
         ########################################
-        # tls for owner
+        # slm for owner
 
-        # n2 buys JAINA! from n1 for 200 TLS
+        # n2 buys JAINA! from n1 for 200 SLM
         price = 200
         amount = 1
         balance1 = newbalance1

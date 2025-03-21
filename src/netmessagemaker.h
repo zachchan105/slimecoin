@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_NETMESSAGEMAKER_H
-#define TELESTAI_NETMESSAGEMAKER_H
+#ifndef SLIMECOIN_NETMESSAGEMAKER_H
+#define SLIMECOIN_NETMESSAGEMAKER_H
 
 #include "net.h"
 #include "serialize.h"
@@ -34,4 +34,4 @@ private:
     const int nVersion;
 };
 
-#endif // TELESTAI_NETMESSAGEMAKER_H
+#endif // SLIMECOIN_NETMESSAGEMAKER_H

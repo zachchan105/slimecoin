@@ -1,10 +1,10 @@
 ﻿// Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_QT_ASSETSDIALOG_H
-#define TELESTAI_QT_ASSETSDIALOG_H
+#ifndef SLIMECOIN_QT_ASSETSDIALOG_H
+#define SLIMECOIN_QT_ASSETSDIALOG_H
 
 #include "walletmodel.h"
 
@@ -26,7 +26,7 @@ QT_BEGIN_NAMESPACE
 class QUrl;
 QT_END_NAMESPACE
 
-/** Dialog for sending telestais */
+/** Dialog for sending slimecoins */
 class AssetsDialog : public QDialog
 {
     Q_OBJECT
@@ -108,14 +108,14 @@ private Q_SLOTS:
 
     void customFeeFeatureChanged(bool);
 
-    /** TLS START */
+    /** SLM START */
     void assetControlUpdateSendCoinsDialog();
     void focusAsset(const QModelIndex& index);
-    /** TLS END */
+    /** SLM END */
 
     Q_SIGNALS:
             // Fired when a message should be reported to the user
             void message(const QString &title, const QString &message, unsigned int style);
 };
 
-#endif // TELESTAI_QT_ASSETSSDIALOG_H
+#endif // SLIMECOIN_QT_ASSETSSDIALOG_H

@@ -3,14 +3,14 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_ADDRESSINDEX_H
-#define TELESTAI_ADDRESSINDEX_H
+#ifndef SLIMECOIN_ADDRESSINDEX_H
+#define SLIMECOIN_ADDRESSINDEX_H
 
 #include "uint256.h"
 #include "amount.h"
 #include "script/script.h"
 
-static const std::string TLS = "TLS";
+static const std::string SLM = "SLM";
 
 struct CAddressUnspentKey {
     unsigned int type;
@@ -42,7 +42,7 @@ struct CAddressUnspentKey {
     CAddressUnspentKey(unsigned int addressType, uint160 addressHash, uint256 txid, size_t indexValue) {
         type = addressType;
         hashBytes = addressHash;
-        asset = TLS;
+        asset = SLM;
         txhash = txid;
         index = indexValue;
     }
@@ -146,7 +146,7 @@ struct CAddressIndexKey {
                      uint256 txid, size_t indexValue, bool isSpending) {
         type = addressType;
         hashBytes = addressHash;
-        asset = TLS;
+        asset = SLM;
         blockHeight = height;
         txindex = blockindex;
         txhash = txid;
@@ -240,7 +240,7 @@ struct CAddressIndexIteratorAssetKey {
     CAddressIndexIteratorAssetKey(unsigned int addressType, uint160 addressHash) {
         type = addressType;
         hashBytes = addressHash;
-        asset = TLS;
+        asset = SLM;
     }
 
     CAddressIndexIteratorAssetKey(unsigned int addressType, uint160 addressHash, std::string assetName) {
@@ -287,7 +287,7 @@ struct CAddressIndexIteratorHeightKey {
     CAddressIndexIteratorHeightKey(unsigned int addressType, uint160 addressHash, int height) {
         type = addressType;
         hashBytes = addressHash;
-        asset = TLS;
+        asset = SLM;
         blockHeight = height;
     }
 
@@ -406,4 +406,4 @@ struct CMempoolAddressDeltaKeyCompare
     }
 };
 
-#endif // TELESTAI_ADDRESSINDEX_H
+#endif // SLIMECOIN_ADDRESSINDEX_H

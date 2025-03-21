@@ -1,5 +1,5 @@
 // Copyright 2014 BitPay Inc.
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -42,8 +42,8 @@ static void initJsonEscape()
 static void outputEscape()
 {
 	printf(	"// Automatically generated file. Do not modify.\n"
-		"#ifndef TELESTAI_UNIVALUE_UNIVALUE_ESCAPES_H\n"
-		"#define TELESTAI_UNIVALUE_UNIVALUE_ESCAPES_H\n"
+		"#ifndef SLIMECOIN_UNIVALUE_UNIVALUE_ESCAPES_H\n"
+		"#define SLIMECOIN_UNIVALUE_UNIVALUE_ESCAPES_H\n"
 		"static const char *escapes[256] = {\n");
 
 	for (unsigned int i = 0; i < 256; i++) {
@@ -73,7 +73,7 @@ static void outputEscape()
 	}
 
 	printf(	"};\n"
-		"#endif // TELESTAI_UNIVALUE_UNIVALUE_ESCAPES_H\n");
+		"#endif // SLIMECOIN_UNIVALUE_UNIVALUE_ESCAPES_H\n");
 }
 
 int main (int argc, char *argv[])

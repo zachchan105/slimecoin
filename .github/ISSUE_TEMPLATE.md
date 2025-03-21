@@ -1,8 +1,8 @@
 <!--- Remove sections that do not apply -->
 
-This issue tracker is only for technical issues related to Telestai.
+This issue tracker is only for technical issues related to Slimecoin.
 
-General Telestai questions and/or support requests and are best directed to the [Telestai Discord](https://discord.gg/jn6uhur)).
+General Slimecoin questions and/or support requests and are best directed to the [Slimecoin Discord](https://discord.gg/jn6uhur)).
 
 For reporting security issues, please direct message one of the core developers in discord.
 
@@ -23,7 +23,7 @@ Tell us what happens instead
 ### Screenshots.
 If the issue is related to the GUI, screenshots can be added to this issue via drag & drop.
 
-### What version of Telestai are you using?
+### What version of Slimecoin are you using?
 List the version number/commit ID, and if it is an official binary, self compiled or a distribution package such as PPA.
 
 ### Machine specs:

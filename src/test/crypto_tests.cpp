@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -13,7 +13,7 @@
 #include "crypto/hmac_sha512.h"
 #include "random.h"
 #include "utilstrencodings.h"
-#include "test/test_telestai.h"
+#include "test/test_slimecoin.h"
 
 #include <vector>
 
@@ -327,7 +327,7 @@ BOOST_FIXTURE_TEST_SUITE(crypto_tests, BasicTestingSetup)
                    "f08a78cbbaee082b052ae0708f32fa1e50c5c421aa772ba5dbb406a2ea6be342");
         TestSHA256("This is exactly 64 bytes long, not counting the terminating byte",
                    "ab64eff7e88e2e46165e29f2bce41826bd4c7b3552f6b382a9e7d3af47c245f8");
-        TestSHA256("As Telestai relies on 80 byte header hashes, we want to have an example for that.",
+        TestSHA256("As Slimecoin relies on 80 byte header hashes, we want to have an example for that.",
                    "4890d7540fe4604653a5108c012bb0d4ec15580dcfda37d85755830ec1037f26");
         TestSHA256(std::string(1000000, 'a'),
                    "cdc76e5c9914fb9281a1c7e284d73e67f1809a48a497200e046d39ccc7112cd0");
@@ -543,7 +543,7 @@ BOOST_FIXTURE_TEST_SUITE(crypto_tests, BasicTestingSetup)
                      "a40c63e34cdea212c4cf07d41b769a6749f3f630f4122cafe28ec4dc47e26d4346d70b98c73f3e9c53ac40c5945398b6eda1a"
                      "832c89c167eacd901d7e2bf363");
 
-        // Test vectors from https://tools.ietf.org/html/draft-agl-tls-chacha20poly1305-04#section-7
+        // Test vectors from https://tools.ietf.org/html/draft-agl-slm-chacha20poly1305-04#section-7
         TestChaCha20("0000000000000000000000000000000000000000000000000000000000000000", 0, 0,
                      "76b8e0ada0f13d90405d6ae55386bd28bdd219b8a08ded1aa836efcc8b770dc7da41597c5157488d7724e03fb8d84a376a43b"
                      "8f41518a11cc387b669b2ee6586");

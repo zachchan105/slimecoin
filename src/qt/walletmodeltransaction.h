@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2014 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_QT_WALLETMODELTRANSACTION_H
-#define TELESTAI_QT_WALLETMODELTRANSACTION_H
+#ifndef SLIMECOIN_QT_WALLETMODELTRANSACTION_H
+#define SLIMECOIN_QT_WALLETMODELTRANSACTION_H
 
 #include "walletmodel.h"
 
@@ -46,4 +46,4 @@ private:
     CAmount fee;
 };
 
-#endif // TELESTAI_QT_WALLETMODELTRANSACTION_H
+#endif // SLIMECOIN_QT_WALLETMODELTRANSACTION_H

@@ -1,15 +1,15 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2021 The Telestai Core developers
+// Copyright (c) 2017-2021 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/telestai-config.h"
+#include "config/slimecoin-config.h"
 #endif
 
 #include "optionsmodel.h"
 
-#include "telestaiunits.h"
+#include "slimecoinunits.h"
 #include "guiutil.h"
 #include "amount.h"
 #include "init.h"
@@ -76,7 +76,7 @@ void OptionsModel::Init(bool resetSettings)
 
     // Display
     if (!settings.contains("nDisplayUnit"))
-        settings.setValue("nDisplayUnit", TelestaiUnits::TLS);
+        settings.setValue("nDisplayUnit", SlimecoinUnits::SLM);
     nDisplayUnit = settings.value("nDisplayUnit").toInt();
     
     if (!settings.contains("nDisplayCurrencyIndex"))

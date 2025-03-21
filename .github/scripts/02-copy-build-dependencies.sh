@@ -56,11 +56,11 @@ else
     echo "----------------------------------------"
 
     cd /tmp
-    curl -O https://telestai-build-resources.s3.amazonaws.com/${OS}/telestai-${OS}-dependencies.tar.gz
-    curl -O https://telestai-build-resources.s3.amazonaws.com/${OS}/SHASUM
+    curl -O https://slimecoin-build-resources.s3.amazonaws.com/${OS}/slimecoin-${OS}-dependencies.tar.gz
+    curl -O https://slimecoin-build-resources.s3.amazonaws.com/${OS}/SHASUM
     if [[ $(sha256sum -c /tmp/SHASUM) ]]; then
         cd ${GITHUB_WORKSPACE}/depends
-        tar zxvf /tmp/telestai-${OS}-dependencies.tar.gz
+        tar zxvf /tmp/slimecoin-${OS}-dependencies.tar.gz
     else
         echo "SHASUM doesn't match"
         exit 1

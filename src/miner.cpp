@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2020 The Telestai Core developers
+// Copyright (c) 2017-2020 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -42,7 +42,7 @@
 extern std::vector<CWalletRef> vpwallets;
 //////////////////////////////////////////////////////////////////////////////
 //
-// TelestaiMiner
+// SlimecoinMiner
 //
 
 //
@@ -553,11 +553,11 @@ CWallet *GetFirstWallet() {
     return(NULL);
 }
 
-void static TelestaiMiner(const CChainParams& chainparams)
+void static SlimecoinMiner(const CChainParams& chainparams)
 {
-    LogPrintf("TelestaiMiner -- started\n");
+    LogPrintf("SlimecoinMiner -- started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("telestai-miner");
+    RenameThread("slimecoin-miner");
 
     unsigned int nExtraNonce = 0;
 
@@ -569,7 +569,7 @@ void static TelestaiMiner(const CChainParams& chainparams)
 
 
     if (!EnsureWalletIsAvailable(pWallet, false)) {
-        LogPrintf("TelestaiMiner -- Wallet not available\n");
+        LogPrintf("SlimecoinMiner -- Wallet not available\n");
     }
 #endif
 
@@ -631,13 +631,13 @@ void static TelestaiMiner(const CChainParams& chainparams)
 
             if (!pblocktemplate.get())
             {
-                LogPrintf("TelestaiMiner -- Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
+                LogPrintf("SlimecoinMiner -- Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
                 return;
             }
             CBlock *pblock = &pblocktemplate->block;
             IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
 
-            LogPrintf("TelestaiMiner -- Running miner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
+            LogPrintf("SlimecoinMiner -- Running miner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
                 ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
 
             //
@@ -658,7 +658,7 @@ void static TelestaiMiner(const CChainParams& chainparams)
                         pblock->mix_hash = mix_hash;
                         // Found a solution
                         SetThreadPriority(THREAD_PRIORITY_NORMAL);
-                        LogPrintf("TelestaiMiner:\n  proof-of-work found\n  hash: %s\n  target: %s\n", hash.GetHex(), hashTarget.GetHex());
+                        LogPrintf("SlimecoinMiner:\n  proof-of-work found\n  hash: %s\n  target: %s\n", hash.GetHex(), hashTarget.GetHex());
                         ProcessBlockFound(pblock, chainparams);
                         SetThreadPriority(THREAD_PRIORITY_LOWEST);
                         coinbaseScript->KeepScript();
@@ -705,17 +705,17 @@ void static TelestaiMiner(const CChainParams& chainparams)
     }
     catch (const boost::thread_interrupted&)
     {
-        LogPrintf("TelestaiMiner -- terminated\n");
+        LogPrintf("SlimecoinMiner -- terminated\n");
         throw;
     }
     catch (const std::runtime_error &e)
     {
-        LogPrintf("TelestaiMiner -- runtime error: %s\n", e.what());
+        LogPrintf("SlimecoinMiner -- runtime error: %s\n", e.what());
         return;
     }
 }
 
-int GenerateTelestais(bool fGenerate, int nThreads, const CChainParams& chainparams)
+int GenerateSlimecoins(bool fGenerate, int nThreads, const CChainParams& chainparams)
 {
 
     static boost::thread_group* minerThreads = NULL;
@@ -742,7 +742,7 @@ int GenerateTelestais(bool fGenerate, int nThreads, const CChainParams& chainpar
     nHashesPerSec = 0;
 
     for (int i = 0; i < nThreads; i++){
-        minerThreads->create_thread(boost::bind(&TelestaiMiner, boost::cref(chainparams)));
+        minerThreads->create_thread(boost::bind(&SlimecoinMiner, boost::cref(chainparams)));
     }
 
     return(numCores);

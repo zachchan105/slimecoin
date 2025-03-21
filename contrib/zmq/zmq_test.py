@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 # Copyright (c) 2014-2016 The Bitcoin Core developers
-# Copyright (c) 2017-2020 The Telestai Core developers
+# Copyright (c) 2017-2020 The Slimecoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 """
     ZMQ example using python3's asyncio
 
-    Telestai should be started with the command line arguments:
-        telestaid -testnet -daemon \
-                -zmqpubhashblock=tcp://127.0.0.1:28766 \
-                -zmqpubrawtx=tcp://127.0.0.1:28766 \
-                -zmqpubhashtx=tcp://127.0.0.1:28766 \
-                -zmqpubhashblock=tcp://127.0.0.1:28766
+    Slimecoin should be started with the command line arguments:
+        slimecoind -testnet -daemon \
+                -zmqpubhashblock=tcp://127.0.0.1:24766 \
+                -zmqpubrawtx=tcp://127.0.0.1:24766 \
+                -zmqpubhashtx=tcp://127.0.0.1:24766 \
+                -zmqpubhashblock=tcp://127.0.0.1:24766
 """
 
 import sys
@@ -25,8 +25,8 @@ import codecs
 context = zmq.Context()
 socket = context.socket(zmq.SUB)
 
-print("Getting Telestai msgs")
-socket.connect("tcp://localhost:28766")
+print("Getting Slimecoin msgs")
+socket.connect("tcp://localhost:24766")
 
 socket.setsockopt_string(zmq.SUBSCRIBE, "hashtx")
 socket.setsockopt_string(zmq.SUBSCRIBE, "hashblock")
@@ -58,8 +58,8 @@ while True:
 		while(pos != -1):
 			pos = astr.find('72766e', start)
 			if (pos > -1):
-				print("FOUND TLS issuance at " + str(pos))
-				print("After TLS: " + astr[pos+6:pos+8])
+				print("FOUND SLM issuance at " + str(pos))
+				print("After SLM: " + astr[pos+6:pos+8])
 				sizestr = astr[pos+8:pos+10]
 				print("sizestr: " + sizestr)
 				#print(str(astr[pos+8:pos+10]))
@@ -68,7 +68,7 @@ while True:
 				print("Name: " + bytes.fromhex(astr[pos+10:pos+10+size*2]).decode('utf-8'))
 			pos = astr.find('72766e', start)
 			if (pos > -1):
-				print("FOUND TLS something at " + str(pos))
+				print("FOUND SLM something at " + str(pos))
 			start += pos+8
 			print(astr)
 

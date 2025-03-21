@@ -1,15 +1,15 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2021 The Telestai Core developers
+// Copyright (c) 2017-2021 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_QT_UTILITYDIALOG_H
-#define TELESTAI_QT_UTILITYDIALOG_H
+#ifndef SLIMECOIN_QT_UTILITYDIALOG_H
+#define SLIMECOIN_QT_UTILITYDIALOG_H
 
 #include <QDialog>
 #include <QObject>
 
-class TelestaiGUI;
+class SlimecoinGUI;
 
 namespace Ui {
     class HelpMessageDialog;
@@ -43,11 +43,11 @@ class ShutdownWindow : public QWidget
 
 public:
     explicit ShutdownWindow(QWidget *parent=nullptr, Qt::WindowFlags f=Qt::Widget);
-    static QWidget *showShutdownWindow(TelestaiGUI *window);
+    static QWidget *showShutdownWindow(SlimecoinGUI *window);
 
 protected:
     void closeEvent(QCloseEvent *event);
 };
 
 
-#endif // TELESTAI_QT_UTILITYDIALOG_H
+#endif // SLIMECOIN_QT_UTILITYDIALOG_H

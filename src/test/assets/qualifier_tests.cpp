@@ -1,10 +1,10 @@
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 
 #include <assets/assets.h>
-#include <test/test_telestai.h>
+#include <test/test_slimecoin.h>
 #include <boost/test/unit_test.hpp>
 #include <amount.h>
 #include <base58.h>

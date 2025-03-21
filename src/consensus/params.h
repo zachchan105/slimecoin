@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2021 The Telestai Core developers
+// Copyright (c) 2017-2021 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_CONSENSUS_PARAMS_H
-#define TELESTAI_CONSENSUS_PARAMS_H
+#ifndef SLIMECOIN_CONSENSUS_PARAMS_H
+#define SLIMECOIN_CONSENSUS_PARAMS_H
 
 #include "uint256.h"
 #include <map>
@@ -81,4 +81,4 @@ struct Params {
 };
 } // namespace Consensus
 
-#endif // TELESTAI_CONSENSUS_PARAMS_H
+#endif // SLIMECOIN_CONSENSUS_PARAMS_H

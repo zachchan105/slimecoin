@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef TELESTAI_POLICYESTIMATOR_H
-#define TELESTAI_POLICYESTIMATOR_H
+#ifndef SLIMECOIN_POLICYESTIMATOR_H
+#define SLIMECOIN_POLICYESTIMATOR_H
 
 #include "amount.h"
 #include "feerate.h"
@@ -301,4 +301,4 @@ static const std::array<int, 9> confTargets = { {2, 4, 6, 12, 24, 48, 144, 504, 
 int getConfTargetForIndex(int index);
 int getIndexForConfTarget(int target);
 
-#endif /*TELESTAI_POLICYESTIMATOR_H */
+#endif /*SLIMECOIN_POLICYESTIMATOR_H */

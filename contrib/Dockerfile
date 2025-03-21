@@ -1,10 +1,10 @@
 FROM amd64/ubuntu:20.04 AS base
 
-#TLS Wallet
+#SLM Wallet
 LABEL maintainer="TesBmcgLQsowvYEYPXpSHkkapoTbVV7Xfe"
 
-EXPOSE 8766/tcp
-EXPOSE 8767/tcp
+EXPOSE 4766/tcp
+EXPOSE 4767/tcp
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -31,33 +31,33 @@ RUN apt-get update && \
 	apt-get clean
 
 #Copy source dir
-COPY . /home/telestai/build/Telestai/
-WORKDIR /home/telestai/build/Telestai
+COPY . /home/slimecoin/build/Slimecoin/
+WORKDIR /home/slimecoin/build/Slimecoin
 
 #build db4 from source
-WORKDIR /home/telestai/build/Telestai/contrib
+WORKDIR /home/slimecoin/build/Slimecoin/contrib
 RUN ./install_db4.sh ../../
 
-# build Telestaicore
-WORKDIR /home/telestai/build/Telestai
-RUN ./autogen.sh && ./configure --disable-tests BDB_LIBS="-L/home/telestai/build/db4/lib -ldb_cxx-4.8" BDB_CFLAGS="-I/home/telestai/build/db4/include" --with-gui=no  && make -j4
+# build Slimecoincore
+WORKDIR /home/slimecoin/build/Slimecoin
+RUN ./autogen.sh && ./configure --disable-tests BDB_LIBS="-L/home/slimecoin/build/db4/lib -ldb_cxx-4.8" BDB_CFLAGS="-I/home/slimecoin/build/db4/include" --with-gui=no  && make -j4
 
 FROM base AS final
 
 #Add our service account user
-RUN useradd -ms /bin/bash telestai && \
-	mkdir /var/lib/telestai && \
-	chown telestai:telestai /var/lib/telestai && \
-	ln -s /var/lib/telestai /home/telestai/.telestai && \
-	chown -h telestai:telestai /home/telestai/.telestai
+RUN useradd -ms /bin/bash slimecoin && \
+	mkdir /var/lib/slimecoin && \
+	chown slimecoin:slimecoin /var/lib/slimecoin && \
+	ln -s /var/lib/slimecoin /home/slimecoin/.slimecoin && \
+	chown -h slimecoin:slimecoin /home/slimecoin/.slimecoin
 
-VOLUME /var/lib/telestai
+VOLUME /var/lib/slimecoin
 
 #Copy the compiled binaries from the build
-COPY --from=build /home/telestai/build/Telestai/src/telestaid /usr/local/bin/telestaid
-COPY --from=build /home/telestai/build/Telestai/src/telestai-cli /usr/local/bin/telestai-cli
+COPY --from=build /home/slimecoin/build/Slimecoin/src/slimecoind /usr/local/bin/slimecoind
+COPY --from=build /home/slimecoin/build/Slimecoin/src/slimecoin-cli /usr/local/bin/slimecoin-cli
 
-WORKDIR /home/telestai
-USER telestai
+WORKDIR /home/slimecoin
+USER slimecoin
 
-CMD /usr/local/bin/telestaid -datadir=/var/lib/telestai -printtoconsole -onlynet=ipv4
+CMD /usr/local/bin/slimecoind -datadir=/var/lib/slimecoin -printtoconsole -onlynet=ipv4

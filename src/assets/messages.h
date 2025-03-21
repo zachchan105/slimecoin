@@ -1,10 +1,10 @@
-// Copyright (c) 2018-2020 The Telestai Core developers
+// Copyright (c) 2018-2020 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 
-#ifndef TELESTAICOIN_MESSAGES_H
-#define TELESTAICOIN_MESSAGES_H
+#ifndef SLIMECOINCOIN_MESSAGES_H
+#define SLIMECOINCOIN_MESSAGES_H
 
 #include <uint256.h>
 #include <serialize.h>
@@ -140,4 +140,4 @@ public:
     std::string createJsonString();
 };
 
-#endif //TELESTAICOIN_MESSAGES_H
+#endif //SLIMECOINCOIN_MESSAGES_H

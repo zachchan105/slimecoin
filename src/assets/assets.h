@@ -1,10 +1,10 @@
-// Copyright (c) 2017-2021 The Telestai Core developers
+// Copyright (c) 2017-2021 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 
-#ifndef TELESTAICOIN_ASSET_PROTOCOL_H
-#define TELESTAICOIN_ASSET_PROTOCOL_H
+#ifndef SLIMECOINCOIN_ASSET_PROTOCOL_H
+#define SLIMECOINCOIN_ASSET_PROTOCOL_H
 
 #include "amount.h"
 #include "tinyformat.h"
@@ -463,10 +463,10 @@ bool CheckIssueBurnTx(const CTxOut& txOut, const AssetType& type);
 bool CheckReissueBurnTx(const CTxOut& txOut);
 
 //! issue asset scripts to make sure script meets the standards
-bool CheckIssueDataTx(const CTxOut& txOut); // OP_TELESTAI_ASSET RVNQ (That is a Q as in Que not an O)
-bool CheckOwnerDataTx(const CTxOut& txOut);// OP_TELESTAI_ASSET RVNO
-bool CheckReissueDataTx(const CTxOut& txOut);// OP_TELESTAI_ASSET RVNR
-bool CheckTransferOwnerTx(const CTxOut& txOut);// OP_TELESTAI_ASSET RVNT
+bool CheckIssueDataTx(const CTxOut& txOut); // OP_SLIMECOIN_ASSET RVNQ (That is a Q as in Que not an O)
+bool CheckOwnerDataTx(const CTxOut& txOut);// OP_SLIMECOIN_ASSET RVNO
+bool CheckReissueDataTx(const CTxOut& txOut);// OP_SLIMECOIN_ASSET RVNR
+bool CheckTransferOwnerTx(const CTxOut& txOut);// OP_SLIMECOIN_ASSET RVNT
 
 //! Check the Encoded hash and make sure it is either an IPFS hash or a OIP hash
 bool CheckEncoded(const std::string& hash, std::string& strError);
@@ -579,4 +579,4 @@ bool ContextualCheckReissueAsset(CAssetsCache* assetCache, const CReissueAsset& 
 bool ContextualCheckUniqueAssetTx(CAssetsCache* assetCache, std::string& strError, const CTransaction& tx);
 bool ContextualCheckUniqueAsset(CAssetsCache* assetCache, const CNewAsset& unique_asset, std::string& strError);
 
-#endif //TELESTAICOIN_ASSET_PROTOCOL_H
+#endif //SLIMECOINCOIN_ASSET_PROTOCOL_H

@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2021 The Telestai Core developers
+// Copyright (c) 2017-2021 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_QT_SPLASHSCREEN_H
-#define TELESTAI_QT_SPLASHSCREEN_H
+#ifndef SLIMECOIN_QT_SPLASHSCREEN_H
+#define SLIMECOIN_QT_SPLASHSCREEN_H
 
 #include <functional>
 #include <QSplashScreen>
@@ -14,7 +14,7 @@ class NetworkStyle;
 
 /** Class for the splashscreen with information of the running client.
  *
- * @note this is intentionally not a QSplashScreen. Telestai Core initialization
+ * @note this is intentionally not a QSplashScreen. Slimecoin Core initialization
  * can take a long time, and in that case a progress window that cannot be
  * moved around and minimized has turned out to be frustrating to the user.
  */
@@ -56,4 +56,4 @@ private:
     QList<CWallet*> connectedWallets;
 };
 
-#endif // TELESTAI_QT_SPLASHSCREEN_H
+#endif // SLIMECOIN_QT_SPLASHSCREEN_H

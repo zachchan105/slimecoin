@@ -1,10 +1,10 @@
 // Copyright (c) 2014-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_TIMEDATA_H
-#define TELESTAI_TIMEDATA_H
+#ifndef SLIMECOIN_TIMEDATA_H
+#define SLIMECOIN_TIMEDATA_H
 
 #include <algorithm>
 #include <assert.h>
@@ -76,4 +76,4 @@ int64_t GetTimeOffset();
 int64_t GetAdjustedTime();
 void AddTimeData(const CNetAddr& ip, int64_t nTime);
 
-#endif // TELESTAI_TIMEDATA_H
+#endif // SLIMECOIN_TIMEDATA_H

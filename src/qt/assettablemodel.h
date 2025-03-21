@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2020 The Telestai Core developers
+// Copyright (c) 2017-2020 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_QT_ASSETTABLEMODEL_H
-#define TELESTAI_QT_ASSETTABLEMODEL_H
+#ifndef SLIMECOIN_QT_ASSETTABLEMODEL_H
+#define SLIMECOIN_QT_ASSETTABLEMODEL_H
 
 #include "amount.h"
 
@@ -38,13 +38,13 @@ public:
     enum RoleIndex {
         /** Net amount of transaction */
             AmountRole = 100,
-        /** TLS or name of an asset */
+        /** SLM or name of an asset */
             AssetNameRole = 101,
         /** Formatted amount, without brackets when unconfirmed */
             FormattedAmountRole = 102,
         /** AdministratorRole */
             AdministratorRole = 103,
-        /** TLS or name of an asset */
+        /** SLM or name of an asset */
             AssetIPFSHashRole = 104,
         /** IPFS Decoration Role */
             AssetIPFSHashDecorationRole = 105
@@ -70,4 +70,4 @@ private:
     friend class AssetTablePriv;
 };
 
-#endif // TELESTAI_QT_ASSETTABLEMODEL_H
+#endif // SLIMECOIN_QT_ASSETTABLEMODEL_H

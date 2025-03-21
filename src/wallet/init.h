@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2017 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_WALLET_INIT_H
-#define TELESTAI_WALLET_INIT_H
+#ifndef SLIMECOIN_WALLET_INIT_H
+#define SLIMECOIN_WALLET_INIT_H
 
 #include <string>
 
@@ -41,4 +41,4 @@ void StopWallets();
 //! Close all wallets.
 void CloseWallets();
 
-#endif // TELESTAI_WALLET_INIT_H
+#endif // SLIMECOIN_WALLET_INIT_H

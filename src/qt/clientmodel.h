@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_QT_CLIENTMODEL_H
-#define TELESTAI_QT_CLIENTMODEL_H
+#ifndef SLIMECOIN_QT_CLIENTMODEL_H
+#define SLIMECOIN_QT_CLIENTMODEL_H
 
 #include <QObject>
 #include <QDateTime>
@@ -35,7 +35,7 @@ enum NumConnections {
     CONNECTIONS_ALL  = (CONNECTIONS_IN | CONNECTIONS_OUT),
 };
 
-/** Model for Telestai network client. */
+/** Model for Slimecoin network client. */
 class ClientModel : public QObject
 {
     Q_OBJECT
@@ -117,4 +117,4 @@ public Q_SLOTS:
     void updateBanlist();
 };
 
-#endif // TELESTAI_QT_CLIENTMODEL_H
+#endif // SLIMECOIN_QT_CLIENTMODEL_H

@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_CUCKOOCACHE_H
-#define TELESTAI_CUCKOOCACHE_H
+#ifndef SLIMECOIN_CUCKOOCACHE_H
+#define SLIMECOIN_CUCKOOCACHE_H
 
 #include <array>
 #include <algorithm>
@@ -478,4 +478,4 @@ public:
 };
 } // namespace CuckooCache
 
-#endif // TELESTAI_CUCKOOCACHE_H
+#endif // SLIMECOIN_CUCKOOCACHE_H

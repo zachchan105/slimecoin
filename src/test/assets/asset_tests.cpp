@@ -1,10 +1,10 @@
-// Copyright (c) 2017-2019 The Telestai Core developers
+// Copyright (c) 2017-2019 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <assets/assets.h>
 
-#include <test/test_telestai.h>
+#include <test/test_slimecoin.h>
 
 #include <boost/test/unit_test.hpp>
 #include "core_write.cpp"
@@ -47,19 +47,19 @@ BOOST_FIXTURE_TEST_SUITE(asset_tests, BasicTestingSetup)
         BOOST_CHECK(!IsAssetNameValid("A._BC", type));
         BOOST_CHECK(!IsAssetNameValid("AB_.C", type));
 
-        //- Versions of TELESTAICOIN NOT allowed
-        BOOST_CHECK(!IsAssetNameValid("TLS", type));
-        BOOST_CHECK(!IsAssetNameValid("TELESTAI", type));
-        BOOST_CHECK(!IsAssetNameValid("TELESTAICOIN", type));
+        //- Versions of SLIMECOINCOIN NOT allowed
+        BOOST_CHECK(!IsAssetNameValid("SLM", type));
+        BOOST_CHECK(!IsAssetNameValid("SLIMECOIN", type));
+        BOOST_CHECK(!IsAssetNameValid("SLIMECOINCOIN", type));
 
-        //- Versions of TELESTAICOIN ALLOWED
-        BOOST_CHECK(IsAssetNameValid("TELESTAI.COIN", type));
-        BOOST_CHECK(IsAssetNameValid("TELESTAI_COIN", type));
+        //- Versions of SLIMECOINCOIN ALLOWED
+        BOOST_CHECK(IsAssetNameValid("SLIMECOIN.COIN", type));
+        BOOST_CHECK(IsAssetNameValid("SLIMECOIN_COIN", type));
         BOOST_CHECK(IsAssetNameValid("RVNSPYDER", type));
         BOOST_CHECK(IsAssetNameValid("SPYDERRVN", type));
-        BOOST_CHECK(IsAssetNameValid("TELESTAISPYDER", type));
-        BOOST_CHECK(IsAssetNameValid("SPYDETELESTAI", type));
-        BOOST_CHECK(IsAssetNameValid("BLACK_TELESTAIS", type));
+        BOOST_CHECK(IsAssetNameValid("SLIMECOINSPYDER", type));
+        BOOST_CHECK(IsAssetNameValid("SPYDESLIMECOIN", type));
+        BOOST_CHECK(IsAssetNameValid("BLACK_SLIMECOINS", type));
         BOOST_CHECK(IsAssetNameValid("SERVNOT", type));
 
         // subs
@@ -227,7 +227,7 @@ BOOST_FIXTURE_TEST_SUITE(asset_tests, BasicTestingSetup)
         SelectParams(CBaseChainParams::MAIN);
 
         // Create the asset scriptPubKey
-        CAssetTransfer asset("TELESTAI", 1000);
+        CAssetTransfer asset("SLIMECOIN", 1000);
         CScript scriptPubKey = GetScriptForDestination(DecodeDestination(GetParams().GlobalBurnAddress()));
         asset.ConstructTransaction(scriptPubKey);
 
@@ -248,7 +248,7 @@ BOOST_FIXTURE_TEST_SUITE(asset_tests, BasicTestingSetup)
         SelectParams(CBaseChainParams::MAIN);
 
         // Create the asset scriptPubKey
-        CNewAsset asset("TELESTAI", 1000, 8, 1, 0, "");
+        CNewAsset asset("SLIMECOIN", 1000, 8, 1, 0, "");
         CScript scriptPubKey = GetScriptForDestination(DecodeDestination(GetParams().GlobalBurnAddress()));
         asset.ConstructTransaction(scriptPubKey);
 

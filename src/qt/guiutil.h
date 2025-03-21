@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017-2021 The Telestai Core developers
+// Copyright (c) 2017-2021 The Slimecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef TELESTAI_QT_GUIUTIL_H
-#define TELESTAI_QT_GUIUTIL_H
+#ifndef SLIMECOIN_QT_GUIUTIL_H
+#define SLIMECOIN_QT_GUIUTIL_H
 
 #include "amount.h"
 #include "fs.h"
@@ -31,7 +31,7 @@ class QWidget;
 class QGraphicsDropShadowEffect;
 QT_END_NAMESPACE
 
-/** Utility functions used by the Telestai Qt UI.
+/** Utility functions used by the Slimecoin Qt UI.
  */
 namespace GUIUtil
 {
@@ -57,10 +57,10 @@ namespace GUIUtil
     void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent);
     void setupAmountWidget(QLineEdit *widget, QWidget *parent);
 
-    // Parse "telestai:" URI into recipient object, return true on successful parsing
-    bool parseTelestaiURI(const QUrl &uri, SendCoinsRecipient *out);
-    bool parseTelestaiURI(QString uri, SendCoinsRecipient *out);
-    QString formatTelestaiURI(const SendCoinsRecipient &info);
+    // Parse "slimecoin:" URI into recipient object, return true on successful parsing
+    bool parseSlimecoinURI(const QUrl &uri, SendCoinsRecipient *out);
+    bool parseSlimecoinURI(QString uri, SendCoinsRecipient *out);
+    QString formatSlimecoinURI(const SendCoinsRecipient &info);
 
     // Returns true if given address+amount meets "dust" definition
     bool isDust(const QString& address, const CAmount& amount);
@@ -127,7 +127,7 @@ namespace GUIUtil
     void openDebugLogfile();
 
     // Open the config file
-    bool openTelestaiConf();
+    bool openSlimecoinConf();
 
     // Replace invalid default fonts with known good ones
     void SubstituteFonts(const QString& language);
@@ -270,4 +270,4 @@ namespace GUIUtil
 
 } // namespace GUIUtil
 
-#endif // TELESTAI_QT_GUIUTIL_H
+#endif // SLIMECOIN_QT_GUIUTIL_H

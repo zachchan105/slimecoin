@@ -1,11 +1,11 @@
 Sample configuration files for:
 ```
-SystemD: telestaid.service
-Upstart: telestaid.conf
-OpenRC:  telestaid.openrc
-         telestaid.openrcconf
-CentOS:  telestaid.init
-OS X:    org.telestai.telestaid.plist
+SystemD: slimecoind.service
+Upstart: slimecoind.conf
+OpenRC:  slimecoind.openrc
+         slimecoind.openrcconf
+CentOS:  slimecoind.init
+OS X:    org.slimecoin.slimecoind.plist
 ```
 have been made available to assist packagers in creating node packages here.
 
