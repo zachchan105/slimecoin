@@ -71,7 +71,7 @@ jobs:
 
     - if: ${{ needs.check-jobs.outputs.should_skip != 'true' }}
       name: Cache dependencies.
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
        path: |
         ${{ GITHUB.WORKSPACE }}/depends/built
