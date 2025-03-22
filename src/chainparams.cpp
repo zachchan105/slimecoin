@@ -164,7 +164,7 @@ public:
 
 
         // The best chain should have at least this much work
-        consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000000026be418fdd92554"); // Block 16943
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000001"); // Block 0
 
         // Assume that the signatures in ancestors of this block are valid. Block# 1040000
         consensus.defaultAssumeValid = uint256S("0x0x00000056b9854abf830236d77443a8e3556f0244265e3eb12281a7bc43b7ff57"); // Block 0
@@ -523,7 +523,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nOverrideMinerConfirmationWindow = 500;
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x00");
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000001"); // Block 0
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x00");
