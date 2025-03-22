@@ -164,7 +164,7 @@ public:
 
 
         // The best chain should have at least this much work
-        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000001"); // Block 0
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000"); // Block 0
 
         // Assume that the signatures in ancestors of this block are valid. Block# 1040000
         consensus.defaultAssumeValid = uint256S("0x0x00000056b9854abf830236d77443a8e3556f0244265e3eb12281a7bc43b7ff57"); // Block 0
@@ -217,15 +217,14 @@ public:
             }
         };
 
-		// 20969961 transactions as of block #2383625 at 2022-07-28 22:02:22 (UTC)
-		// previously set at 6709969 txns by time 1577939273 ==>
+		// Data for a new chain - only genesis block
         chainTxData = ChainTxData{
             // Update as we know more about the contents of the Slimecoin chain
             // Stats as of 0x00000000000016ec03d8d93f9751323bcc42137b1b4df67e6a11c4394fd8e5ad window size 43200
             1723683041, // * UNIX timestamp of last known number of transactions
-            20823,    // * total number of transactions between genesis and that timestamp
+            0,    // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
-            0.01865512171389507       // * estimated number of transactions per second after that timestamp
+            0.0         // * estimated number of transactions per second after that timestamp
         };
 
         /** SLM Start **/
@@ -409,7 +408,7 @@ public:
         fDefaultConsistencyChecks = false;
         fRequireStandard = false;
         fMineBlocksOnDemand = false;
-        fMiningRequiresPeers = true;
+        fMiningRequiresPeers = false;
 
         checkpointData = (CCheckpointData) {
             {
@@ -417,12 +416,11 @@ public:
         };
 
         chainTxData = ChainTxData{
-            // Update as we know more about the contents of the Slimecoin chain
-            // Stats as of 00000023b66f46d74890287a7b1157dd780c7c5fdda2b561eb96684d2b39d62e window size 43200
-            1543633332, // * UNIX timestamp of last known number of transactions
-            146666,     // * total number of transactions between genesis and that timestamp
+            // Data for a new chain - only genesis block
+            1721866235, // * UNIX timestamp of genesis block
+            0,          // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
-            0.02        // * estimated number of transactions per second after that timestamp
+            0.0         // * estimated number of transactions per second after that timestamp
         };
 
         /** SLM Start **/
@@ -523,7 +521,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nOverrideMinerConfirmationWindow = 500;
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000001"); // Block 0
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000"); // Block 0
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x00");
