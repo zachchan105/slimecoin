@@ -197,8 +197,8 @@ public:
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,63);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,125);
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,153);
-        base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x89, 0xB3, 0x1F};
-        base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x89, 0xAE, 0xE5};
+        base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
+        base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
 
         // Slimecoin BIP44 cointype in mainnet is '31337'
         nExtCoinType = 31337;
